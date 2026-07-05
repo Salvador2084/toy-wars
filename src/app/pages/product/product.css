@@ -1,0 +1,144 @@
+.subtitle {
+  color: #888;
+}
+
+.badge-franchise {
+  background-color: transparent;
+  border: 1px solid var(--tw-yellow);
+  color: var(--tw-yellow);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.badge-edition {
+  background-color: var(--tw-yellow);
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.price-main {
+  color: var(--tw-yellow);
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.main-img {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 10px;
+  height: 400px;
+}
+
+.thumb-img {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 6px;
+  height: 80px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.thumb-img:hover {
+  border-color: var(--tw-yellow);
+}
+
+.info-block {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+
+.stock-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.carrier-logo {
+  background-color: var(--tw-light-gray);
+  width: 40px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.payment-badge {
+  background-color: var(--tw-light-gray);
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  font-weight: semibold;
+}
+
+.btn-yellow {
+  background-color: var(--tw-yellow);
+  color: #000;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-yellow:hover {
+  background-color: #d4c200;
+  color: #000;
+}
+
+.btn-outline-wish {
+  background-color: transparent;
+  border: 1px solid #333;
+  color: var(--tw-white);
+  transition: border-color 0.2s;
+}
+
+.btn-outline-wish:hover {
+  border-color: var(--tw-yellow);
+}
+
+.section-block {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 10px;
+}
+
+.spec-table {
+  color: var(--tw-white);
+}
+
+.spec-table td {
+  border-color: #333;
+  padding: 10px;
+}
+
+.review-card {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+
+.product-card {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.product-card:hover {
+  border-color: var(--tw-yellow);
+}
+
+.product-img {
+  background-color: var(--tw-light-gray);
+  height: 160px;
+  border-radius: 6px;
+}
+
+.price {
+  color: var(--tw-yellow);
+  font-weight: bold;
+}

@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --tw-black: #0a0a0a;
+  --tw-dark: #141414;
+  --tw-gray: #1f1f1f;
+  --tw-light-gray: #2e2e2e;
+  --tw-yellow: #FFE81F;
+  --tw-white: #f5f5f5;
+}
+
+body {
+  background-color: var(--tw-black);
+  color: var(--tw-white);
+}

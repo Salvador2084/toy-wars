@@ -1,0 +1,134 @@
+<main class="py-5">
+  <div class="container">
+
+    <!-- Encabezado -->
+    <div class="mb-4">
+      <h1 class="fw-bold">Catálogo</h1>
+      <p class="subtitle">Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+
+    <!-- Barra de búsqueda y ordenar -->
+    <div class="row g-3 mb-4">
+      <div class="col-md-6">
+        <input type="text" class="form-control search-input" placeholder="Buscar figura...">
+      </div>
+      <div class="col-md-3">
+        <select class="form-select search-input">
+          <option value="">Franquicia</option>
+          <option>Star Wars</option>
+          <option>Warhammer</option>
+          <option>Halo</option>
+          <option>Transformers</option>
+          <option>Anime</option>
+          <option>Star Trek</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <select class="form-select search-input">
+          <option value="">Ordenar por...</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+          <option value="name-asc">Nombre: A - Z</option>
+          <option value="name-desc">Nombre: Z - A</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Filtros secundarios -->
+    <div class="d-flex gap-2 flex-wrap mb-5">
+      <button class="btn btn-yellow btn-sm">Todos</button>
+      <button class="btn btn-outline-filter btn-sm">Edición limitada</button>
+      <button class="btn btn-outline-filter btn-sm">Escala 1:6</button>
+      <button class="btn btn-outline-filter btn-sm">Escala 1:8</button>
+      <button class="btn btn-outline-filter btn-sm">Escala 1:12</button>
+      <button class="btn btn-outline-filter btn-sm">Escala 1:18</button>
+      <button class="btn btn-outline-filter btn-sm">Disponible</button>
+      <button class="btn btn-outline-filter btn-sm">Preventa</button>
+    </div>
+
+    <!-- Grid de productos -->
+    <div class="row g-4">
+      <div class="col-6 col-md-3">
+        <div class="product-card p-3 h-100">
+          <div class="product-img mb-3"></div>
+          <span class="badge-franchise mb-1 d-inline-block">Star Wars</span>
+          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
+          <p class="small subtitle mb-2">Escala 1:6 · Lorem ipsum</p>
+          <p class="price">$999.99</p>
+          <a routerLink="/product/1" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="product-card p-3 h-100">
+          <div class="product-img mb-3"></div>
+          <span class="badge-franchise mb-1 d-inline-block">Warhammer</span>
+          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
+          <p class="small subtitle mb-2">Escala 1:18 · Lorem ipsum</p>
+          <p class="price">$749.99</p>
+          <a routerLink="/product/2" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="product-card p-3 h-100">
+          <div class="product-img mb-3"></div>
+          <span class="badge-franchise mb-1 d-inline-block">Anime</span>
+          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
+          <p class="small subtitle mb-2">Escala 1:8 · Lorem ipsum</p>
+          <p class="price">$1,299.99</p>
+          <a routerLink="/product/3" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="product-card p-3 h-100">
+          <div class="product-img mb-3"></div>
+          <span class="badge-franchise mb-1 d-inline-block">Halo</span>
+          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
+          <p class="small subtitle mb-2">Escala 1:6 · Lorem ipsum</p>
+          <p class="price">$1,099.99</p>
+          <a routerLink="/product/4" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="product-card p-3 h-100">
+          <div class="product-img mb-3"></div>
+          <span class="badge-franchise mb-1 d-inline-block">Transformers</span>
+          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
+          <p class="small subtitle mb-2">Escala 1:12 · Lorem ipsum</p>
+          <p class="price">$849.99</p>
+          <a routerLink="/product/5" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="product-card p-3 h-100">
+          <div class="product-img mb-3"></div>
+          <span class="badge-franchise mb-1 d-inline-block">Star Trek</span>
+          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
+          <p class="small subtitle mb-2">Escala 1:6 · Lorem ipsum</p>
+          <p class="price">$1,199.99</p>
+          <a routerLink="/product/6" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="product-card p-3 h-100">
+          <div class="product-img mb-3"></div>
+          <span class="badge-franchise mb-1 d-inline-block">Star Wars</span>
+          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
+          <p class="small subtitle mb-2">Escala 1:8 · Lorem ipsum</p>
+          <p class="price">$899.99</p>
+          <a routerLink="/product/7" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="product-card p-3 h-100">
+          <div class="product-img mb-3"></div>
+          <span class="badge-franchise mb-1 d-inline-block">Anime</span>
+          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
+          <p class="small subtitle mb-2">Escala 1:18 · Lorem ipsum</p>
+          <p class="price">$649.99</p>
+          <a routerLink="/product/8" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>

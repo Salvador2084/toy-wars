@@ -1,0 +1,90 @@
+.hero {
+  background-color: var(--tw-black);
+  border-bottom: 1px solid var(--tw-yellow);
+}
+
+.subtitle {
+  color: #888;
+}
+
+.badge-edition {
+  background-color: var(--tw-yellow);
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.badge-franchise {
+  background-color: transparent;
+  border: 1px solid var(--tw-yellow);
+  color: var(--tw-yellow);
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.section-dark {
+  background-color: var(--tw-dark);
+}
+
+.franchise-card {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 8px;
+  transition: border-color 0.2s, transform 0.2s;
+  color: var(--tw-white);
+}
+
+.franchise-card:hover {
+  border-color: var(--tw-yellow);
+  transform: translateY(-3px);
+}
+
+.franchise-img {
+  background-color: var(--tw-light-gray);
+  height: 80px;
+  border-radius: 6px;
+}
+
+.product-card {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.product-card:hover {
+  border-color: var(--tw-yellow);
+}
+
+.product-img {
+  background-color: var(--tw-light-gray);
+  height: 180px;
+  border-radius: 6px;
+}
+
+.price {
+  color: var(--tw-yellow);
+  font-weight: bold;
+}
+
+.btn-yellow {
+  background-color: var(--tw-yellow);
+  color: #000;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-yellow:hover {
+  background-color: #d4c200;
+  color: #000;
+}
+
+.banner {
+  background-color: var(--tw-black);
+  border-top: 1px solid var(--tw-yellow);
+  border-bottom: 1px solid var(--tw-yellow);
+}

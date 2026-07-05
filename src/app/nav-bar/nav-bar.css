@@ -1,0 +1,18 @@
+nav {
+  background-color: var(--tw-black) !important;
+  border-bottom: 1px solid var(--tw-yellow);
+}
+
+.navbar-brand {
+  color: var(--tw-yellow) !important;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.nav-link {
+  color: var(--tw-white) !important;
+}
+
+.nav-link:hover {
+  color: var(--tw-yellow) !important;
+}

@@ -1,0 +1,71 @@
+.hero-about {
+  background-color: var(--tw-black);
+  border-bottom: 1px solid var(--tw-yellow);
+}
+
+.subtitle {
+  color: #888;
+}
+
+.section-dark {
+  background-color: var(--tw-dark);
+}
+
+.placeholder-img {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 10px;
+  height: 300px;
+}
+
+.value-card {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.value-card:hover {
+  border-color: var(--tw-yellow);
+}
+
+.team-card {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.team-card:hover {
+  border-color: var(--tw-yellow);
+}
+
+.team-img {
+  background-color: var(--tw-light-gray);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+
+.role {
+  color: var(--tw-yellow);
+  font-size: 0.85rem;
+}
+
+.brand-card {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.brand-card:hover {
+  border-color: var(--tw-yellow);
+}
+
+.brand-img {
+  background-color: var(--tw-light-gray);
+  width: 80px;
+  height: 60px;
+  border-radius: 6px;
+}

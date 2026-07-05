@@ -1,0 +1,87 @@
+.subtitle {
+  color: #888;
+}
+
+.btn-yellow {
+  background-color: var(--tw-yellow);
+  color: #000;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-yellow:hover {
+  background-color: #d4c200;
+  color: #000;
+}
+
+.btn-outline-filter {
+  background-color: transparent;
+  border: 1px solid #333;
+  color: var(--tw-white);
+  transition: border-color 0.2s;
+}
+
+.btn-outline-filter:hover {
+  border-color: var(--tw-yellow);
+  color: var(--tw-yellow);
+}
+
+.wish-card {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 8px;
+  position: relative;
+  transition: border-color 0.2s;
+}
+
+.wish-card:hover {
+  border-color: var(--tw-yellow);
+}
+
+.btn-remove-wish {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.btn-remove-wish:hover {
+  opacity: 1;
+}
+
+.product-img {
+  background-color: var(--tw-light-gray);
+  height: 160px;
+  border-radius: 6px;
+}
+
+.badge-franchise {
+  background-color: transparent;
+  border: 1px solid var(--tw-yellow);
+  color: var(--tw-yellow);
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.price {
+  color: var(--tw-yellow);
+  font-weight: bold;
+}
+
+.btn-outline-cart {
+  background-color: transparent;
+  border: 1px solid #333;
+  color: var(--tw-white);
+  transition: border-color 0.2s;
+}
+
+.btn-outline-cart:hover {
+  border-color: var(--tw-yellow);
+}

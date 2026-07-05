@@ -1,3 +1,32 @@
 import { Routes } from '@angular/router';
+import { Home } from './pages/home/home';
+import { Catalog } from './pages/catalog/catalog';
+import { Product } from './pages/product/product';
+import { Categories } from './pages/categories/categories';
+import { Cart } from './pages/cart/cart';
+import { Checkout } from './pages/checkout/checkout';
+import { Account } from './pages/account/account';
+import { Wishlist } from './pages/wishlist/wishlist';
+import { About } from './pages/about/about';
+import { Contact } from './pages/contact/contact';
+import { Faq } from './pages/faq/faq';
+import { Policies } from './pages/policies/policies';
+import { Blog } from './pages/blog/blog';
+import { NotFound } from './pages/not-found/not-found';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', component: Home },
+  { path: 'catalog', component: Catalog },
+  { path: 'product/:id', component: Product },
+  { path: 'categories', component: Categories },
+  { path: 'cart', component: Cart },
+  { path: 'checkout', component: Checkout },
+  { path: 'account', component: Account },
+  { path: 'wishlist', component: Wishlist },
+  { path: 'about', component: About },
+  { path: 'contact', component: Contact },
+  { path: 'faq', component: Faq },
+  { path: 'policies', component: Policies },
+  { path: 'blog', component: Blog },
+  { path: '**', component: NotFound },
+];

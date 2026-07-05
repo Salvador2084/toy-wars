@@ -1,0 +1,271 @@
+<main class="py-5">
+  <div class="container">
+
+    <div class="row g-4">
+
+      <!-- Sidebar -->
+      <div class="col-md-3">
+        <div class="section-block p-4 mb-3">
+          <div class="text-center mb-3">
+            <div class="avatar mx-auto mb-3"></div>
+            <h6 class="fw-bold mb-0">Lorem Ipsum</h6>
+            <p class="subtitle small mb-0">lorem&#64;email.com</p>
+          </div>
+        </div>
+        <div class="section-block p-2">
+          <a href="#perfil" class="menu-link active px-3 py-2 d-block">👤 Perfil</a>
+          <a href="#pedidos" class="menu-link px-3 py-2 d-block">📦 Pedidos</a>
+          <a href="#direccion" class="menu-link px-3 py-2 d-block">📍 Dirección</a>
+          <a href="#pago" class="menu-link px-3 py-2 d-block">💳 Métodos de pago</a>
+          <a href="#wishlist" class="menu-link px-3 py-2 d-block">❤️ Wishlist</a>
+          <a href="#seguridad" class="menu-link px-3 py-2 d-block">🔒 Seguridad</a>
+          <a href="#preferencias" class="menu-link px-3 py-2 d-block">⭐ Preferencias</a>
+          <a href="#configuracion" class="menu-link px-3 py-2 d-block">⚙️ Configuración</a>
+          <hr class="border-secondary mx-3">
+          <a href="#" class="menu-link danger px-3 py-2 d-block">🚪 Cerrar sesión</a>
+        </div>
+      </div>
+
+      <!-- Contenido -->
+      <div class="col-md-9 d-flex flex-column gap-4">
+
+        <!-- Perfil -->
+        <div class="section-block p-4" id="perfil">
+          <h5 class="fw-bold mb-4">👤 Perfil</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label label-text">Nombre</label>
+              <input type="text" class="form-control account-input" value="Lorem">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label label-text">Apellido</label>
+              <input type="text" class="form-control account-input" value="Ipsum">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label label-text">Correo</label>
+              <input type="email" class="form-control account-input" value="lorem@email.com">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label label-text">Teléfono</label>
+              <input type="tel" class="form-control account-input" value="+52 664 000 0000">
+            </div>
+            <div class="col-12">
+              <button class="btn btn-yellow">Guardar cambios</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Historial de pedidos -->
+        <div class="section-block p-4" id="pedidos">
+          <h5 class="fw-bold mb-4">📦 Historial de pedidos</h5>
+          <div class="order-row p-3 mb-2">
+            <div class="row align-items-center">
+              <div class="col-md-3">
+                <p class="fw-semibold mb-0 small">#TW-00001</p>
+                <p class="subtitle small mb-0">12 jun, 2026</p>
+              </div>
+              <div class="col-md-3">
+                <p class="mb-0 small">3 artículos</p>
+              </div>
+              <div class="col-md-2">
+                <span class="status-badge delivered">Entregado</span>
+              </div>
+              <div class="col-md-2">
+                <p class="price mb-0 small">$4,349.96</p>
+              </div>
+              <div class="col-md-2 text-end">
+                <a href="#" class="btn btn-yellow btn-sm">Ver</a>
+              </div>
+            </div>
+          </div>
+          <div class="order-row p-3 mb-2">
+            <div class="row align-items-center">
+              <div class="col-md-3">
+                <p class="fw-semibold mb-0 small">#TW-00002</p>
+                <p class="subtitle small mb-0">28 may, 2026</p>
+              </div>
+              <div class="col-md-3">
+                <p class="mb-0 small">1 artículo</p>
+              </div>
+              <div class="col-md-2">
+                <span class="status-badge transit">En tránsito</span>
+              </div>
+              <div class="col-md-2">
+                <p class="price mb-0 small">$1,299.99</p>
+              </div>
+              <div class="col-md-2 text-end">
+                <a href="#" class="btn btn-yellow btn-sm">Ver</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dirección -->
+        <div class="section-block p-4" id="direccion">
+          <h5 class="fw-bold mb-4">📍 Dirección guardada</h5>
+          <div class="row g-3">
+            <div class="col-12">
+              <label class="form-label label-text">Calle y número</label>
+              <input type="text" class="form-control account-input" placeholder="Calle, número exterior e interior">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label label-text">Colonia</label>
+              <input type="text" class="form-control account-input" placeholder="Colonia">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label label-text">Ciudad</label>
+              <input type="text" class="form-control account-input" placeholder="Ciudad">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label label-text">Estado</label>
+              <input type="text" class="form-control account-input" placeholder="Estado">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label label-text">Código postal</label>
+              <input type="text" class="form-control account-input" placeholder="00000">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label label-text">País</label>
+              <select class="form-select account-input">
+                <option>México</option>
+                <option>Estados Unidos</option>
+                <option>Canadá</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-yellow">Guardar dirección</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Métodos de pago -->
+        <div class="section-block p-4" id="pago">
+          <h5 class="fw-bold mb-4">💳 Métodos de pago guardados</h5>
+          <div class="d-flex flex-column gap-2">
+            <div class="payment-item d-flex align-items-center gap-3 p-3">
+              <div class="payment-logo"></div>
+              <div class="flex-grow-1">
+                <p class="fw-semibold mb-0">PayPal</p>
+                <p class="subtitle small mb-0">lorem&#64;email.com</p>
+              </div>
+              <span class="badge-default">Predeterminado</span>
+            </div>
+            <div class="payment-item d-flex align-items-center gap-3 p-3">
+              <div class="payment-logo"></div>
+              <div class="flex-grow-1">
+                <p class="fw-semibold mb-0">Mercado Pago</p>
+                <p class="subtitle small mb-0">lorem&#64;email.com</p>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-outline-add mt-3">+ Agregar método de pago</button>
+        </div>
+
+        <!-- Wishlist -->
+        <div class="section-block p-4" id="wishlist">
+          <h5 class="fw-bold mb-4">❤️ Wishlist</h5>
+          <div class="row g-3">
+            <div class="col-6 col-md-3">
+              <div class="product-card p-3">
+                <div class="product-img mb-2"></div>
+                <span class="badge-franchise mb-1 d-inline-block">Star Wars</span>
+                <p class="fw-semibold mb-1 small">Lorem ipsum dolor</p>
+                <p class="price small">$999.99</p>
+                <a routerLink="/product/1" class="btn btn-yellow btn-sm w-100">Ver</a>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="product-card p-3">
+                <div class="product-img mb-2"></div>
+                <span class="badge-franchise mb-1 d-inline-block">Anime</span>
+                <p class="fw-semibold mb-1 small">Lorem ipsum dolor</p>
+                <p class="price small">$849.99</p>
+                <a routerLink="/product/2" class="btn btn-yellow btn-sm w-100">Ver</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Seguridad -->
+        <div class="section-block p-4" id="seguridad">
+          <h5 class="fw-bold mb-4">🔒 Seguridad</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label label-text">Contraseña actual</label>
+              <input type="password" class="form-control account-input" placeholder="••••••••">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label label-text">Nueva contraseña</label>
+              <input type="password" class="form-control account-input" placeholder="••••••••">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label label-text">Confirmar contraseña</label>
+              <input type="password" class="form-control account-input" placeholder="••••••••">
+            </div>
+            <div class="col-12">
+              <button class="btn btn-yellow">Actualizar contraseña</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preferencias -->
+        <div class="section-block p-4" id="preferencias">
+          <h5 class="fw-bold mb-4">⭐ Preferencias</h5>
+          <p class="subtitle small mb-3">Franquicias favoritas</p>
+          <div class="d-flex gap-2 flex-wrap mb-4">
+            <button class="btn btn-yellow btn-sm">Star Wars</button>
+            <button class="btn btn-outline-filter btn-sm">Warhammer</button>
+            <button class="btn btn-outline-filter btn-sm">Halo</button>
+            <button class="btn btn-outline-filter btn-sm">Anime</button>
+            <button class="btn btn-outline-filter btn-sm">Transformers</button>
+            <button class="btn btn-outline-filter btn-sm">Star Trek</button>
+          </div>
+          <p class="subtitle small mb-3">Notificaciones</p>
+          <div class="d-flex flex-column gap-2">
+            <div class="d-flex justify-content-between align-items-center pref-item p-3">
+              <span class="small">Nuevos lanzamientos</span>
+              <input type="checkbox" checked>
+            </div>
+            <div class="d-flex justify-content-between align-items-center pref-item p-3">
+              <span class="small">Ofertas y descuentos</span>
+              <input type="checkbox" checked>
+            </div>
+            <div class="d-flex justify-content-between align-items-center pref-item p-3">
+              <span class="small">Estado de pedidos</span>
+              <input type="checkbox" checked>
+            </div>
+          </div>
+        </div>
+
+        <!-- Configuración -->
+        <div class="section-block p-4" id="configuracion">
+          <h5 class="fw-bold mb-4">⚙️ Configuración</h5>
+          <div class="d-flex flex-column gap-2">
+            <div class="d-flex justify-content-between align-items-center pref-item p-3">
+              <div>
+                <p class="fw-semibold mb-0 small">Idioma</p>
+                <p class="subtitle small mb-0">Español</p>
+              </div>
+              <button class="btn btn-outline-filter btn-sm">Cambiar</button>
+            </div>
+            <div class="d-flex justify-content-between align-items-center pref-item p-3">
+              <div>
+                <p class="fw-semibold mb-0 small">Moneda</p>
+                <p class="subtitle small mb-0">MXN - Peso mexicano</p>
+              </div>
+              <button class="btn btn-outline-filter btn-sm">Cambiar</button>
+            </div>
+            <div class="d-flex justify-content-between align-items-center pref-item p-3">
+              <div>
+                <p class="fw-semibold mb-0 small">Eliminar cuenta</p>
+                <p class="subtitle small mb-0">Lorem ipsum dolor sit amet.</p>
+              </div>
+              <button class="btn btn-danger btn-sm">Eliminar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>

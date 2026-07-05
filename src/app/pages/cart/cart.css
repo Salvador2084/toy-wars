@@ -1,0 +1,148 @@
+.subtitle {
+  color: #888;
+}
+
+.cart-item {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+
+.cart-img {
+  background-color: var(--tw-light-gray);
+  height: 80px;
+  border-radius: 6px;
+}
+
+.badge-franchise {
+  background-color: transparent;
+  border: 1px solid var(--tw-yellow);
+  color: var(--tw-yellow);
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.qty-control {
+  background-color: var(--tw-light-gray);
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 4px 10px;
+  width: fit-content;
+}
+
+.btn-qty {
+  background: none;
+  border: none;
+  color: var(--tw-white);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.btn-qty:hover {
+  color: var(--tw-yellow);
+}
+
+.btn-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.btn-remove:hover {
+  opacity: 1;
+}
+
+.price {
+  color: var(--tw-yellow);
+  font-weight: bold;
+}
+
+.price-sm {
+  color: var(--tw-yellow);
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.section-block {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 10px;
+}
+
+.shipping-option {
+  display: flex;
+  align-items: center;
+  background-color: var(--tw-light-gray);
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.shipping-option:hover {
+  border-color: var(--tw-yellow);
+}
+
+.shipping-option input[type="radio"] {
+  accent-color: var(--tw-yellow);
+}
+
+.shipping-option label {
+  cursor: pointer;
+  width: 100%;
+}
+
+.search-input {
+  background-color: var(--tw-light-gray);
+  border: 1px solid #333;
+  color: var(--tw-white);
+}
+
+.search-input:focus {
+  background-color: var(--tw-light-gray);
+  border-color: var(--tw-yellow);
+  color: var(--tw-white);
+  box-shadow: 0 0 0 0.2rem rgba(255, 232, 31, 0.15);
+}
+
+.search-input::placeholder {
+  color: #666;
+}
+
+.payment-badge {
+  background-color: var(--tw-light-gray);
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+}
+
+.btn-yellow {
+  background-color: var(--tw-yellow);
+  color: #000;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-yellow:hover {
+  background-color: #d4c200;
+  color: #000;
+}
+
+.btn-outline-back {
+  background-color: transparent;
+  border: 1px solid #333;
+  color: var(--tw-white);
+  transition: border-color 0.2s;
+}
+
+.btn-outline-back:hover {
+  border-color: var(--tw-yellow);
+  color: var(--tw-yellow);
+}

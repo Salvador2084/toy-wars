@@ -1,0 +1,45 @@
+.banner-top {
+  background-color: var(--tw-dark);
+  border-bottom: 1px solid var(--tw-yellow);
+}
+
+.subtitle {
+  color: #888;
+}
+
+.category-card {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 8px;
+  transition: border-color 0.2s, transform 0.2s;
+  color: var(--tw-white);
+}
+
+.category-card:hover {
+  border-color: var(--tw-yellow);
+  transform: translateY(-4px);
+}
+
+.category-img {
+  background-color: var(--tw-light-gray);
+  width: 100%;
+  height: 140px;
+  border-radius: 6px;
+}
+
+.product-count {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.list-item {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: var(--tw-white);
+  transition: border-color 0.2s;
+}
+
+.list-item:hover {
+  border-color: var(--tw-yellow);
+}

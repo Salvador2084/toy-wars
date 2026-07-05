@@ -1,0 +1,43 @@
+.subtitle {
+  color: #888;
+}
+
+.section-block {
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 10px;
+}
+
+.menu-link {
+  color: var(--tw-white);
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.menu-link:hover {
+  background-color: var(--tw-light-gray);
+  color: var(--tw-yellow);
+}
+
+.spec-table {
+  color: var(--tw-white);
+}
+
+.spec-table th {
+  border-color: #333;
+  color: #aaa;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.spec-table td {
+  border-color: #333;
+  padding: 10px;
+}
+
+.price {
+  color: var(--tw-yellow);
+  font-weight: bold;
+}
