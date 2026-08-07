@@ -1,43 +1,88 @@
 <footer class="bg-dark text-light mt-5 pt-5 pb-3">
   <div class="container">
-    <div class="row">
+    <div class="row mb-4">
 
       <div class="col-md-4 mb-4">
-        <h5 class="fw-bold">Toy Wars</h5>
-        <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio delectus modi error rem.</p>
+        <h5 class="fw-bold text-yellow">Toy Wars</h5>
+        <p class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio delectus modi error rem.</p>
       </div>
 
       <div class="col-md-2 mb-4">
         <h6 class="fw-bold">Tienda</h6>
         <ul class="list-unstyled">
-          <li><a routerLink="/catalog" class="text-secondary text-decoration-none">Catálogo</a></li>
-          <li><a routerLink="/categories" class="text-secondary text-decoration-none">Categorías</a></li>
-          <li><a routerLink="/blog" class="text-secondary text-decoration-none">Blog</a></li>
+          <li><a routerLink="/catalog" class="footer-link">Catálogo</a></li>
+          <li><a routerLink="/categories" class="footer-link">Categorías</a></li>
+          <li><a routerLink="/blog" class="footer-link">Blog</a></li>
         </ul>
       </div>
 
       <div class="col-md-2 mb-4">
         <h6 class="fw-bold">Mi cuenta</h6>
         <ul class="list-unstyled">
-          <li><a routerLink="/account" class="text-secondary text-decoration-none">Mi cuenta</a></li>
-          <li><a routerLink="/wishlist" class="text-secondary text-decoration-none">Lista de deseos</a></li>
-          <li><a routerLink="/cart" class="text-secondary text-decoration-none">Carrito</a></li>
+          <li><a routerLink="/account" class="footer-link">Mi cuenta</a></li>
+          <li><a routerLink="/wishlist" class="footer-link">Lista de deseos</a></li>
+          <li><a routerLink="/cart" class="footer-link">Carrito</a></li>
         </ul>
       </div>
 
       <div class="col-md-2 mb-4">
         <h6 class="fw-bold">Información</h6>
         <ul class="list-unstyled">
-          <li><a routerLink="/about" class="text-secondary text-decoration-none">Nosotros</a></li>
-          <li><a routerLink="/contact" class="text-secondary text-decoration-none">Contacto</a></li>
-          <li><a routerLink="/faq" class="text-secondary text-decoration-none">FAQ</a></li>
-          <li><a routerLink="/policies" class="text-secondary text-decoration-none">Políticas</a></li>
+          <li><a routerLink="/about" class="footer-link">Nosotros</a></li>
+          <li><a routerLink="/contact" class="footer-link">Contacto</a></li>
+          <li><a routerLink="/faq" class="footer-link">FAQ</a></li>
+          <li><a routerLink="/policies" class="footer-link">Políticas</a></li>
         </ul>
       </div>
 
     </div>
 
+    <!-- Envíos y pagos -->
+    <div class="row g-4 mb-4">
+
+      <div class="col-md-6">
+        <p class="small fw-bold text-secondary mb-2">ENVÍOS CON</p>
+        <div class="d-flex gap-3">
+          <div class="carrier-badge">
+            <div class="carrier-logo"></div>
+            <span class="small fw-semibold">DHL Express</span>
+          </div>
+          <div class="carrier-badge">
+            <div class="carrier-logo"></div>
+            <span class="small fw-semibold">Estafeta</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <p class="small fw-bold text-secondary mb-2">MÉTODOS DE PAGO</p>
+        <div class="d-flex gap-3">
+          <div class="carrier-badge">
+            <div class="carrier-logo"></div>
+            <span class="small fw-semibold">PayPal</span>
+          </div>
+          <div class="carrier-badge">
+            <div class="carrier-logo"></div>
+            <span class="small fw-semibold">Mercado Pago</span>
+          </div>
+          <div class="carrier-badge">
+            <div class="carrier-logo"></div>
+            <span class="small fw-semibold">Stripe</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
     <hr class="border-secondary">
-    <p class="text-center text-secondary mb-0">© 2026 Toy Wars. Todos los derechos reservados.</p>
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <p class="text-secondary small mb-0">© 2026 Toy Wars. Todos los derechos reservados.</p>
+      <div class="d-flex gap-3">
+        <a routerLink="/policies" class="footer-link small">Privacidad</a>
+        <a routerLink="/policies" class="footer-link small">Términos</a>
+        <a routerLink="/policies" class="footer-link small">Cookies</a>
+      </div>
+    </div>
+
   </div>
 </footer>

@@ -4,199 +4,142 @@
     <!-- Encabezado -->
     <div class="mb-4">
       <h1 class="fw-bold">Carrito</h1>
-      <p class="subtitle">3 artículos en tu carrito</p>
+      <p class="subtitle">{{ cartService.cartCount() }} artículos en tu carrito</p>
     </div>
 
-    <div class="row g-4">
+    @if (cartService.cartCount() === 0) {
+      <div class="text-center py-5">
+        <p class="subtitle fs-5">Tu carrito está vacío.</p>
+        <a routerLink="/catalog" class="btn btn-yellow mt-3">Ver catálogo</a>
+      </div>
+    } @else {
+      <div class="row g-4">
 
-      <!-- Lista de productos -->
-      <div class="col-md-8">
+        <!-- Lista de productos -->
+        <div class="col-md-8">
 
-        <!-- Producto 1 -->
-        <div class="cart-item p-3 mb-3">
-          <div class="row align-items-center g-3">
-            <div class="col-3 col-md-2">
-              <div class="cart-img"></div>
-            </div>
-            <div class="col-9 col-md-6">
-              <span class="badge-franchise mb-1 d-inline-block">Star Wars</span>
-              <p class="fw-semibold mb-0">Lorem ipsum dolor sit amet</p>
-              <p class="subtitle small mb-0">Escala 1:6 · Hot Toys</p>
-            </div>
-            <div class="col-6 col-md-2">
-              <div class="qty-control d-flex align-items-center gap-2">
-                <button class="btn-qty">−</button>
-                <span class="fw-semibold">1</span>
-                <button class="btn-qty">+</button>
+          @for (item of cartService.cartItems(); track item.id) {
+            <div class="cart-item p-3 mb-3">
+              <div class="row align-items-center g-3">
+                <div class="col-3 col-md-2">
+                  <div class="cart-img"></div>
+                </div>
+                <div class="col-9 col-md-6">
+                  <span class="badge-franchise mb-1 d-inline-block">{{ item.franchise }}</span>
+                  <p class="fw-semibold mb-0">{{ item.name }}</p>
+                  <p class="subtitle small mb-0">Escala {{ item.scale }} · {{ item.brand }}</p>
+                </div>
+                <div class="col-6 col-md-2">
+                  <div class="qty-control d-flex align-items-center gap-2">
+                    <button class="btn-qty" (click)="cartService.updateQuantity(item.id, item.quantity - 1)">−</button>
+                    <span class="fw-semibold">{{ item.quantity }}</span>
+                    <button class="btn-qty" (click)="cartService.updateQuantity(item.id, item.quantity + 1)">+</button>
+                  </div>
+                </div>
+                <div class="col-4 col-md-1 text-end">
+                  <p class="price mb-0">${{ (item.price * item.quantity).toFixed(2) }}</p>
+                </div>
+                <div class="col-2 col-md-1 text-end">
+                  <button class="btn-remove" (click)="cartService.removeItem(item.id)">🗑️</button>
+                </div>
               </div>
             </div>
-            <div class="col-4 col-md-1 text-end">
-              <p class="price mb-0">$1,299.99</p>
+          }
+
+          <!-- Opciones de envío -->
+          <div class="section-block p-4 mb-4">
+            <h5 class="fw-bold mb-3">Opciones de envío</h5>
+            <div class="shipping-option mb-2">
+              <input type="radio" name="shipping" id="dhl-express" class="me-2" checked>
+              <label for="dhl-express" class="d-flex justify-content-between align-items-center w-100">
+                <div>
+                  <span class="fw-semibold">DHL Express</span>
+                  <span class="subtitle small ms-2">3-5 días hábiles</span>
+                </div>
+                <span class="price-sm">$250.00</span>
+              </label>
             </div>
-            <div class="col-2 col-md-1 text-end">
-              <button class="btn-remove">🗑️</button>
+            <div class="shipping-option mb-2">
+              <input type="radio" name="shipping" id="estafeta" class="me-2">
+              <label for="estafeta" class="d-flex justify-content-between align-items-center w-100">
+                <div>
+                  <span class="fw-semibold">Estafeta</span>
+                  <span class="subtitle small ms-2">5-7 días hábiles</span>
+                </div>
+                <span class="price-sm">$150.00</span>
+              </label>
+            </div>
+            <hr class="border-secondary my-3">
+            <h6 class="fw-bold mb-3">Entrega especial</h6>
+            <div class="shipping-option mb-2">
+              <input type="radio" name="shipping" id="same-day" class="me-2">
+              <label for="same-day" class="d-flex justify-content-between align-items-center w-100">
+                <div>
+                  <span class="fw-semibold">Same-Day Delivery</span>
+                  <span class="subtitle small ms-2">Hoy antes de las 10pm</span>
+                </div>
+                <span class="price-sm">$450.00</span>
+              </label>
+            </div>
+            <div class="shipping-option mb-3">
+              <input type="radio" name="shipping" id="one-day" class="me-2">
+              <label for="one-day" class="d-flex justify-content-between align-items-center w-100">
+                <div>
+                  <span class="fw-semibold">One-Day Delivery</span>
+                  <span class="subtitle small ms-2">Mañana antes de las 10pm</span>
+                </div>
+                <span class="price-sm">$350.00</span>
+              </label>
+            </div>
+            <h6 class="fw-bold mb-3">Fecha de entrega disponible</h6>
+            <input type="date" class="form-control search-input">
+          </div>
+
+          <!-- Cupón -->
+          <div class="section-block p-4">
+            <h5 class="fw-bold mb-3">Cupón de descuento</h5>
+            <div class="d-flex gap-2">
+              <input type="text" class="form-control search-input" placeholder="Ingresa tu cupón">
+              <button class="btn btn-yellow px-4">Aplicar</button>
             </div>
           </div>
+
         </div>
 
-        <!-- Producto 2 -->
-        <div class="cart-item p-3 mb-3">
-          <div class="row align-items-center g-3">
-            <div class="col-3 col-md-2">
-              <div class="cart-img"></div>
+        <!-- Resumen del pedido -->
+        <div class="col-md-4">
+          <div class="section-block p-4 sticky-top" style="top: 20px;">
+            <h5 class="fw-bold mb-4">Resumen del pedido</h5>
+            <div class="d-flex justify-content-between mb-2">
+              <span class="subtitle">Subtotal ({{ cartService.cartCount() }} artículos)</span>
+              <span>${{ cartService.cartTotal().toFixed(2) }}</span>
             </div>
-            <div class="col-9 col-md-6">
-              <span class="badge-franchise mb-1 d-inline-block">Anime</span>
-              <p class="fw-semibold mb-0">Lorem ipsum dolor sit amet</p>
-              <p class="subtitle small mb-0">Escala 1:8 · Bandai</p>
+            <div class="d-flex justify-content-between mb-2">
+              <span class="subtitle">Envío</span>
+              <span>$250.00</span>
             </div>
-            <div class="col-6 col-md-2">
-              <div class="qty-control d-flex align-items-center gap-2">
-                <button class="btn-qty">−</button>
-                <span class="fw-semibold">2</span>
-                <button class="btn-qty">+</button>
-              </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span class="subtitle">Descuento</span>
+              <span class="text-success">-$0.00</span>
             </div>
-            <div class="col-4 col-md-1 text-end">
-              <p class="price mb-0">$1,699.98</p>
+            <hr class="border-secondary">
+            <div class="d-flex justify-content-between mb-4">
+              <span class="fw-bold">Total</span>
+              <span class="price fw-bold fs-5">${{ (cartService.cartTotal() + 250).toFixed(2) }}</span>
             </div>
-            <div class="col-2 col-md-1 text-end">
-              <button class="btn-remove">🗑️</button>
+            <p class="subtitle small mb-2">Paga con</p>
+            <div class="d-flex gap-2 mb-4">
+              <div class="payment-badge">PayPal</div>
+              <div class="payment-badge">Mercado Pago</div>
+              <div class="payment-badge">Stripe</div>
             </div>
-          </div>
-        </div>
-
-        <!-- Producto 3 -->
-        <div class="cart-item p-3 mb-4">
-          <div class="row align-items-center g-3">
-            <div class="col-3 col-md-2">
-              <div class="cart-img"></div>
-            </div>
-            <div class="col-9 col-md-6">
-              <span class="badge-franchise mb-1 d-inline-block">Halo</span>
-              <p class="fw-semibold mb-0">Lorem ipsum dolor sit amet</p>
-              <p class="subtitle small mb-0">Escala 1:6 · McFarlane</p>
-            </div>
-            <div class="col-6 col-md-2">
-              <div class="qty-control d-flex align-items-center gap-2">
-                <button class="btn-qty">−</button>
-                <span class="fw-semibold">1</span>
-                <button class="btn-qty">+</button>
-              </div>
-            </div>
-            <div class="col-4 col-md-1 text-end">
-              <p class="price mb-0">$1,099.99</p>
-            </div>
-            <div class="col-2 col-md-1 text-end">
-              <button class="btn-remove">🗑️</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Opciones de envío -->
-        <div class="section-block p-4 mb-4">
-          <h5 class="fw-bold mb-3">Opciones de envío</h5>
-
-          <div class="shipping-option mb-2">
-            <input type="radio" name="shipping" id="dhl-express" class="me-2" checked>
-            <label for="dhl-express" class="d-flex justify-content-between align-items-center w-100">
-              <div>
-                <span class="fw-semibold">DHL Express</span>
-                <span class="subtitle small ms-2">3-5 días hábiles</span>
-              </div>
-              <span class="price-sm">$250.00</span>
-            </label>
-          </div>
-
-          <div class="shipping-option mb-2">
-            <input type="radio" name="shipping" id="estafeta" class="me-2">
-            <label for="estafeta" class="d-flex justify-content-between align-items-center w-100">
-              <div>
-                <span class="fw-semibold">Estafeta</span>
-                <span class="subtitle small ms-2">5-7 días hábiles</span>
-              </div>
-              <span class="price-sm">$150.00</span>
-            </label>
-          </div>
-
-          <hr class="border-secondary my-3">
-          <h6 class="fw-bold mb-3">Entrega especial</h6>
-
-          <div class="shipping-option mb-2">
-            <input type="radio" name="shipping" id="same-day" class="me-2">
-            <label for="same-day" class="d-flex justify-content-between align-items-center w-100">
-              <div>
-                <span class="fw-semibold">Same-Day Delivery</span>
-                <span class="subtitle small ms-2">Hoy antes de las 10pm</span>
-              </div>
-              <span class="price-sm">$450.00</span>
-            </label>
-          </div>
-
-          <div class="shipping-option mb-3">
-            <input type="radio" name="shipping" id="one-day" class="me-2">
-            <label for="one-day" class="d-flex justify-content-between align-items-center w-100">
-              <div>
-                <span class="fw-semibold">One-Day Delivery</span>
-                <span class="subtitle small ms-2">Mañana antes de las 10pm</span>
-              </div>
-              <span class="price-sm">$350.00</span>
-            </label>
-          </div>
-
-          <h6 class="fw-bold mb-3">Fecha de entrega disponible</h6>
-          <input type="date" class="form-control search-input">
-        </div>
-
-        <!-- Cupón -->
-        <div class="section-block p-4">
-          <h5 class="fw-bold mb-3">Cupón de descuento</h5>
-          <div class="d-flex gap-2">
-            <input type="text" class="form-control search-input" placeholder="Ingresa tu cupón">
-            <button class="btn btn-yellow px-4">Aplicar</button>
+            <a routerLink="/checkout" class="btn btn-yellow w-100 btn-lg">Proceder al pago</a>
+            <a routerLink="/catalog" class="btn btn-outline-back w-100 mt-2">Seguir comprando</a>
           </div>
         </div>
 
       </div>
+    }
 
-      <!-- Resumen del pedido -->
-      <div class="col-md-4">
-        <div class="section-block p-4 sticky-top" style="top: 20px;">
-          <h5 class="fw-bold mb-4">Resumen del pedido</h5>
-
-          <div class="d-flex justify-content-between mb-2">
-            <span class="subtitle">Subtotal (4 artículos)</span>
-            <span>$4,099.96</span>
-          </div>
-          <div class="d-flex justify-content-between mb-2">
-            <span class="subtitle">Envío</span>
-            <span>$250.00</span>
-          </div>
-          <div class="d-flex justify-content-between mb-2">
-            <span class="subtitle">Descuento</span>
-            <span class="text-success">-$0.00</span>
-          </div>
-
-          <hr class="border-secondary">
-
-          <div class="d-flex justify-content-between mb-4">
-            <span class="fw-bold">Total</span>
-            <span class="price fw-bold fs-5">$4,349.96</span>
-          </div>
-
-          <!-- Métodos de pago -->
-          <p class="subtitle small mb-2">Paga con</p>
-          <div class="d-flex gap-2 mb-4">
-            <div class="payment-badge">PayPal</div>
-            <div class="payment-badge">Mercado Pago</div>
-            <div class="payment-badge">Stripe</div>
-          </div>
-
-          <a routerLink="/checkout" class="btn btn-yellow w-100 btn-lg">Proceder al pago</a>
-          <a routerLink="/catalog" class="btn btn-outline-back w-100 mt-2">Seguir comprando</a>
-        </div>
-      </div>
-
-    </div>
   </div>
 </main>

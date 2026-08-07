@@ -77,3 +77,13 @@
   color: var(--tw-yellow);
   font-weight: bold;
 }
+.btn-outline-cart {
+  background-color: transparent;
+  border: 1px solid #333;
+  color: var(--tw-white);
+  transition: border-color 0.2s;
+}
+
+.btn-outline-cart:hover {
+  border-color: var(--tw-yellow);
+}

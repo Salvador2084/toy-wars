@@ -1,0 +1,44 @@
+footer {
+  background-color: var(--tw-dark) !important;
+  border-top: 1px solid var(--tw-yellow);
+}
+
+.text-yellow {
+  color: var(--tw-yellow);
+}
+
+.footer-link {
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.footer-link:hover {
+  color: var(--tw-yellow);
+}
+
+.carrier-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--tw-gray);
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px 16px;
+  color: var(--tw-white);
+  transition: border-color 0.2s;
+}
+
+.carrier-badge:hover {
+  border-color: var(--tw-yellow);
+}
+
+.carrier-logo {
+  background-color: var(--tw-light-gray);
+  width: 50px;
+  height: 30px;
+  border-radius: 4px;
+}

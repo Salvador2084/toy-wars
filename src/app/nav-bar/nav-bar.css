@@ -16,3 +16,18 @@ nav {
 .nav-link:hover {
   color: var(--tw-yellow) !important;
 }
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--tw-yellow);
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: bold;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

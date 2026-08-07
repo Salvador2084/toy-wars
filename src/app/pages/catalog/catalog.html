@@ -10,11 +10,12 @@
     <!-- Barra de búsqueda y ordenar -->
     <div class="row g-3 mb-4">
       <div class="col-md-6">
-        <input type="text" class="form-control search-input" placeholder="Buscar figura...">
+        <input type="text" class="form-control search-input" placeholder="Buscar figura..."
+          [(ngModel)]="searchValue" (ngModelChange)="setSearch($event)">
       </div>
       <div class="col-md-3">
-        <select class="form-select search-input">
-          <option value="">Franquicia</option>
+        <select class="form-select search-input" (change)="setFranchise($any($event.target).value)">
+          <option value="Todos">Franquicia</option>
           <option>Star Wars</option>
           <option>Warhammer</option>
           <option>Halo</option>
@@ -24,7 +25,7 @@
         </select>
       </div>
       <div class="col-md-3">
-        <select class="form-select search-input">
+        <select class="form-select search-input" (change)="setSort($any($event.target).value)">
           <option value="">Ordenar por...</option>
           <option value="price-asc">Precio: menor a mayor</option>
           <option value="price-desc">Precio: mayor a menor</option>
@@ -36,98 +37,81 @@
 
     <!-- Filtros secundarios -->
     <div class="d-flex gap-2 flex-wrap mb-5">
-      <button class="btn btn-yellow btn-sm">Todos</button>
-      <button class="btn btn-outline-filter btn-sm">Edición limitada</button>
-      <button class="btn btn-outline-filter btn-sm">Escala 1:6</button>
-      <button class="btn btn-outline-filter btn-sm">Escala 1:8</button>
-      <button class="btn btn-outline-filter btn-sm">Escala 1:12</button>
-      <button class="btn btn-outline-filter btn-sm">Escala 1:18</button>
-      <button class="btn btn-outline-filter btn-sm">Disponible</button>
-      <button class="btn btn-outline-filter btn-sm">Preventa</button>
+      <button class="btn btn-sm"
+        [class.btn-yellow]="selectedFranchise() === 'Todos' && selectedScale() === 'Todos'"
+        [class.btn-outline-filter]="selectedFranchise() !== 'Todos' || selectedScale() !== 'Todos'"
+        (click)="setFranchise('Todos'); setScale('Todos')">Todos</button>
+      <button class="btn btn-sm"
+        [class.btn-yellow]="selectedFranchise() === 'Star Wars'"
+        [class.btn-outline-filter]="selectedFranchise() !== 'Star Wars'"
+        (click)="setFranchise('Star Wars')">Star Wars</button>
+      <button class="btn btn-sm"
+        [class.btn-yellow]="selectedFranchise() === 'Warhammer'"
+        [class.btn-outline-filter]="selectedFranchise() !== 'Warhammer'"
+        (click)="setFranchise('Warhammer')">Warhammer</button>
+      <button class="btn btn-sm"
+        [class.btn-yellow]="selectedFranchise() === 'Halo'"
+        [class.btn-outline-filter]="selectedFranchise() !== 'Halo'"
+        (click)="setFranchise('Halo')">Halo</button>
+      <button class="btn btn-sm"
+        [class.btn-yellow]="selectedFranchise() === 'Anime'"
+        [class.btn-outline-filter]="selectedFranchise() !== 'Anime'"
+        (click)="setFranchise('Anime')">Anime</button>
+      <button class="btn btn-sm"
+        [class.btn-yellow]="selectedFranchise() === 'Transformers'"
+        [class.btn-outline-filter]="selectedFranchise() !== 'Transformers'"
+        (click)="setFranchise('Transformers')">Transformers</button>
+      <button class="btn btn-sm"
+        [class.btn-yellow]="selectedFranchise() === 'Star Trek'"
+        [class.btn-outline-filter]="selectedFranchise() !== 'Star Trek'"
+        (click)="setFranchise('Star Trek')">Star Trek</button>
+      <span class="border-start border-secondary mx-1"></span>
+      <button class="btn btn-sm"
+        [class.btn-yellow]="selectedScale() === '1:6'"
+        [class.btn-outline-filter]="selectedScale() !== '1:6'"
+        (click)="setScale('1:6')">Escala 1:6</button>
+      <button class="btn btn-sm"
+        [class.btn-yellow]="selectedScale() === '1:8'"
+        [class.btn-outline-filter]="selectedScale() !== '1:8'"
+        (click)="setScale('1:8')">Escala 1:8</button>
+      <button class="btn btn-sm"
+        [class.btn-yellow]="selectedScale() === '1:12'"
+        [class.btn-outline-filter]="selectedScale() !== '1:12'"
+        (click)="setScale('1:12')">Escala 1:12</button>
+      <button class="btn btn-sm"
+        [class.btn-yellow]="selectedScale() === '1:18'"
+        [class.btn-outline-filter]="selectedScale() !== '1:18'"
+        (click)="setScale('1:18')">Escala 1:18</button>
     </div>
 
     <!-- Grid de productos -->
     <div class="row g-4">
-      <div class="col-6 col-md-3">
-        <div class="product-card p-3 h-100">
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Star Wars</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:6 · Lorem ipsum</p>
-          <p class="price">$999.99</p>
-          <a routerLink="/product/1" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+      @for (product of filteredProducts(); track product.id) {
+        <div class="col-6 col-md-3">
+          <div class="product-card p-3 h-100">
+            <div class="product-img mb-3"></div>
+            <span class="badge-franchise mb-1 d-inline-block">{{ product.franchise }}</span>
+            <p class="fw-semibold mb-1">{{ product.name }}</p>
+            <p class="small subtitle mb-2">Escala {{ product.scale }} · {{ product.brand }}</p>
+            <p class="price">${{ product.price }}</p>
+            <a [routerLink]="['/product', product.id]" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+            <div class="d-flex gap-2 mt-2">
+  <a [routerLink]="['/product', product.id]" class="btn btn-yellow btn-sm flex-grow-1">Ver</a>
+  <button class="btn btn-outline-cart btn-sm"
+    (click)="cartService.addItem({id: product.id, name: product.name, franchise: product.franchise, scale: product.scale, brand: product.brand, price: product.price})">
+    🛒
+  </button>
+</div>
+          </div>
         </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="product-card p-3 h-100">
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Warhammer</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:18 · Lorem ipsum</p>
-          <p class="price">$749.99</p>
-          <a routerLink="/product/2" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+      }
+
+      @if (filteredProducts().length === 0) {
+        <div class="col-12 text-center py-5">
+          <p class="subtitle">No se encontraron figuras con los filtros seleccionados.</p>
+          <button class="btn btn-yellow mt-2" (click)="setFranchise('Todos'); setScale('Todos')">Limpiar filtros</button>
         </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="product-card p-3 h-100">
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Anime</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:8 · Lorem ipsum</p>
-          <p class="price">$1,299.99</p>
-          <a routerLink="/product/3" class="btn btn-yellow btn-sm w-100">Ver figura</a>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="product-card p-3 h-100">
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Halo</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:6 · Lorem ipsum</p>
-          <p class="price">$1,099.99</p>
-          <a routerLink="/product/4" class="btn btn-yellow btn-sm w-100">Ver figura</a>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="product-card p-3 h-100">
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Transformers</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:12 · Lorem ipsum</p>
-          <p class="price">$849.99</p>
-          <a routerLink="/product/5" class="btn btn-yellow btn-sm w-100">Ver figura</a>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="product-card p-3 h-100">
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Star Trek</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:6 · Lorem ipsum</p>
-          <p class="price">$1,199.99</p>
-          <a routerLink="/product/6" class="btn btn-yellow btn-sm w-100">Ver figura</a>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="product-card p-3 h-100">
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Star Wars</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:8 · Lorem ipsum</p>
-          <p class="price">$899.99</p>
-          <a routerLink="/product/7" class="btn btn-yellow btn-sm w-100">Ver figura</a>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="product-card p-3 h-100">
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Anime</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:18 · Lorem ipsum</p>
-          <p class="price">$649.99</p>
-          <a routerLink="/product/8" class="btn btn-yellow btn-sm w-100">Ver figura</a>
-        </div>
-      </div>
+      }
     </div>
 
   </div>
