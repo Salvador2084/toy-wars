@@ -18,7 +18,14 @@
 
       <ul class="navbar-nav ms-3">
         <li class="nav-item"><a class="nav-link" routerLink="/wishlist">❤️</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/cart">🛒</a></li>
+        <li class="nav-item">
+  <a class="nav-link position-relative" routerLink="/cart">
+    🛒
+    @if (cartService.cartCount() > 0) {
+      <span class="cart-badge">{{ cartService.cartCount() }}</span>
+    }
+  </a>
+</li>
         <li class="nav-item"><a class="nav-link" routerLink="/account">👤</a></li>
       </ul>
     </div>
