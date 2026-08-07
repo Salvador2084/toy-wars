@@ -7,10 +7,10 @@
       <div class="col-md-3">
         <div class="section-block p-4 mb-3">
           <div class="text-center mb-3">
-            <div class="avatar mx-auto mb-3"></div>
-            <h6 class="fw-bold mb-0">Lorem Ipsum</h6>
-            <p class="subtitle small mb-0">lorem&#64;email.com</p>
-          </div>
+  <div class="avatar mx-auto mb-3"></div>
+  <h6 class="fw-bold mb-0">{{ authService.currentUser()?.firstName }} {{ authService.currentUser()?.lastName }}</h6>
+  <p class="subtitle small mb-0">{{ authService.currentUser()?.email }}</p>
+</div>
         </div>
         <div class="section-block p-2">
           <a href="#perfil" class="menu-link active px-3 py-2 d-block">👤 Perfil</a>
@@ -22,8 +22,7 @@
           <a href="#preferencias" class="menu-link px-3 py-2 d-block">⭐ Preferencias</a>
           <a href="#configuracion" class="menu-link px-3 py-2 d-block">⚙️ Configuración</a>
           <hr class="border-secondary mx-3">
-          <a href="#" class="menu-link danger px-3 py-2 d-block">🚪 Cerrar sesión</a>
-        </div>
+<a href="#" class="menu-link danger px-3 py-2 d-block" (click)="logout(); $event.preventDefault()">🚪 Cerrar sesión</a>        </div>
       </div>
 
       <!-- Contenido -->
@@ -31,29 +30,29 @@
 
         <!-- Perfil -->
         <div class="section-block p-4" id="perfil">
-          <h5 class="fw-bold mb-4">👤 Perfil</h5>
-          <div class="row g-3">
-            <div class="col-md-6">
-              <label class="form-label label-text">Nombre</label>
-              <input type="text" class="form-control account-input" value="Lorem">
-            </div>
-            <div class="col-md-6">
-              <label class="form-label label-text">Apellido</label>
-              <input type="text" class="form-control account-input" value="Ipsum">
-            </div>
-            <div class="col-md-6">
-              <label class="form-label label-text">Correo</label>
-              <input type="email" class="form-control account-input" value="lorem@email.com">
-            </div>
-            <div class="col-md-6">
-              <label class="form-label label-text">Teléfono</label>
-              <input type="tel" class="form-control account-input" value="+52 664 000 0000">
-            </div>
-            <div class="col-12">
-              <button class="btn btn-yellow">Guardar cambios</button>
-            </div>
-          </div>
-        </div>
+  <h5 class="fw-bold mb-4">👤 Perfil</h5>
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label label-text">Nombre</label>
+      <input type="text" class="form-control account-input" [(ngModel)]="firstName">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label label-text">Apellido</label>
+      <input type="text" class="form-control account-input" [(ngModel)]="lastName">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label label-text">Correo</label>
+      <input type="email" class="form-control account-input" [(ngModel)]="email">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label label-text">Teléfono</label>
+      <input type="tel" class="form-control account-input" [(ngModel)]="phone">
+    </div>
+    <div class="col-12">
+      <button class="btn btn-yellow">Guardar cambios</button>
+    </div>
+  </div>
+</div>
 
         <!-- Historial de pedidos -->
         <div class="section-block p-4" id="pedidos">

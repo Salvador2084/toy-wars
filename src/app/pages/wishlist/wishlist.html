@@ -5,136 +5,39 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
       <div>
         <h1 class="fw-bold mb-1">Wishlist</h1>
-        <p class="subtitle mb-0">8 figuras guardadas</p>
+        <p class="subtitle mb-0">{{ wishedProducts().length }} figuras guardadas</p>
       </div>
       <button class="btn btn-yellow">🛒 Agregar todo al carrito</button>
     </div>
 
-    <!-- Filtros -->
-    <div class="d-flex gap-2 flex-wrap mb-4">
-      <button class="btn btn-yellow btn-sm">Todas</button>
-      <button class="btn btn-outline-filter btn-sm">Star Wars</button>
-      <button class="btn btn-outline-filter btn-sm">Warhammer</button>
-      <button class="btn btn-outline-filter btn-sm">Halo</button>
-      <button class="btn btn-outline-filter btn-sm">Anime</button>
-      <button class="btn btn-outline-filter btn-sm">Transformers</button>
-      <button class="btn btn-outline-filter btn-sm">Star Trek</button>
-    </div>
-
     <!-- Grid -->
     <div class="row g-4">
-      <div class="col-6 col-md-3">
-        <div class="wish-card p-3 h-100">
-          <button class="btn-remove-wish">❤️</button>
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Star Wars</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:6 · Hot Toys</p>
-          <p class="price mb-3">$1,299.99</p>
-          <div class="d-flex gap-2">
-            <a routerLink="/product/1" class="btn btn-yellow btn-sm flex-grow-1">Ver figura</a>
-            <button class="btn btn-outline-cart btn-sm">🛒</button>
+      @for (product of wishedProducts(); track product.id) {
+        <div class="col-6 col-md-3">
+          <div class="wish-card p-3 h-100">
+            <button class="btn-remove-wish" (click)="wishlistService.toggle(product.id)">❤️</button>
+            <div class="product-img mb-3"></div>
+            <span class="badge-franchise mb-1 d-inline-block">{{ product.franchise }}</span>
+            <p class="fw-semibold mb-1">{{ product.name }}</p>
+            <p class="small subtitle mb-2">Escala {{ product.scale }} · {{ product.brand }}</p>
+            <p class="price mb-3">${{ product.price }}</p>
+            <div class="d-flex gap-2">
+              <a [routerLink]="['/product', product.id]" class="btn btn-yellow btn-sm flex-grow-1">Ver figura</a>
+              <button class="btn btn-outline-cart btn-sm"
+                (click)="cartService.addItem({id: product.id, name: product.name, franchise: product.franchise, scale: product.scale, brand: product.brand, price: product.price})">
+                🛒
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="wish-card p-3 h-100">
-          <button class="btn-remove-wish">❤️</button>
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Anime</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:8 · Bandai</p>
-          <p class="price mb-3">$849.99</p>
-          <div class="d-flex gap-2">
-            <a routerLink="/product/2" class="btn btn-yellow btn-sm flex-grow-1">Ver figura</a>
-            <button class="btn btn-outline-cart btn-sm">🛒</button>
-          </div>
+      }
+
+      @if (wishedProducts().length === 0) {
+        <div class="col-12 text-center py-5">
+          <p class="subtitle">Aún no has guardado ninguna figura en tu wishlist.</p>
+          <a routerLink="/catalog" class="btn btn-yellow mt-2">Ir al catálogo</a>
         </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="wish-card p-3 h-100">
-          <button class="btn-remove-wish">❤️</button>
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Halo</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:6 · McFarlane</p>
-          <p class="price mb-3">$1,099.99</p>
-          <div class="d-flex gap-2">
-            <a routerLink="/product/3" class="btn btn-yellow btn-sm flex-grow-1">Ver figura</a>
-            <button class="btn btn-outline-cart btn-sm">🛒</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="wish-card p-3 h-100">
-          <button class="btn-remove-wish">❤️</button>
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Warhammer</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:18 · Sideshow</p>
-          <p class="price mb-3">$749.99</p>
-          <div class="d-flex gap-2">
-            <a routerLink="/product/4" class="btn btn-yellow btn-sm flex-grow-1">Ver figura</a>
-            <button class="btn btn-outline-cart btn-sm">🛒</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="wish-card p-3 h-100">
-          <button class="btn-remove-wish">❤️</button>
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Transformers</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:12 · Hasbro</p>
-          <p class="price mb-3">$899.99</p>
-          <div class="d-flex gap-2">
-            <a routerLink="/product/5" class="btn btn-yellow btn-sm flex-grow-1">Ver figura</a>
-            <button class="btn btn-outline-cart btn-sm">🛒</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="wish-card p-3 h-100">
-          <button class="btn-remove-wish">❤️</button>
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Star Trek</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:6 · NECA</p>
-          <p class="price mb-3">$1,199.99</p>
-          <div class="d-flex gap-2">
-            <a routerLink="/product/6" class="btn btn-yellow btn-sm flex-grow-1">Ver figura</a>
-            <button class="btn btn-outline-cart btn-sm">🛒</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="wish-card p-3 h-100">
-          <button class="btn-remove-wish">❤️</button>
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Star Wars</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:8 · Hot Toys</p>
-          <p class="price mb-3">$999.99</p>
-          <div class="d-flex gap-2">
-            <a routerLink="/product/7" class="btn btn-yellow btn-sm flex-grow-1">Ver figura</a>
-            <button class="btn btn-outline-cart btn-sm">🛒</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="wish-card p-3 h-100">
-          <button class="btn-remove-wish">❤️</button>
-          <div class="product-img mb-3"></div>
-          <span class="badge-franchise mb-1 d-inline-block">Anime</span>
-          <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-          <p class="small subtitle mb-2">Escala 1:6 · Bandai</p>
-          <p class="price mb-3">$1,049.99</p>
-          <div class="d-flex gap-2">
-            <a routerLink="/product/8" class="btn btn-yellow btn-sm flex-grow-1">Ver figura</a>
-            <button class="btn btn-outline-cart btn-sm">🛒</button>
-          </div>
-        </div>
-      </div>
+      }
     </div>
 
   </div>

@@ -101,6 +101,10 @@
     (click)="cartService.addItem({id: product.id, name: product.name, franchise: product.franchise, scale: product.scale, brand: product.brand, price: product.price})">
     🛒
   </button>
+  <button class="btn btn-outline-cart btn-sm"
+    (click)="wishlistService.toggle(product.id)">
+    {{ wishlistService.isInWishlist(product.id) ? '❤️' : '🤍' }}
+  </button>
 </div>
           </div>
         </div>

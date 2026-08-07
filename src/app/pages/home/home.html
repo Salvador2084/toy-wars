@@ -76,86 +76,52 @@
   </section>
 
   <!-- Productos destacados -->
-  <section class="py-5">
-    <div class="container">
-      <h2 class="fw-bold mb-1">Destacados</h2>
-      <p class="subtitle mb-4">Lorem ipsum dolor sit amet consectetur.</p>
-      <div class="row g-4">
+<section class="py-5">
+  <div class="container">
+    <h2 class="fw-bold mb-1">Destacados</h2>
+    <p class="subtitle mb-4">Lorem ipsum dolor sit amet consectetur.</p>
+    <div class="row g-4">
+      @for (product of featuredProducts(); track product.id) {
         <div class="col-6 col-md-3">
           <div class="product-card p-3 h-100">
             <div class="product-img mb-3"></div>
-            <span class="badge-franchise mb-1 d-inline-block">Star Wars</span>
-            <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-            <p class="small subtitle mb-2">Escala 1:6 · Lorem ipsum</p>
-            <p class="price">$999.99</p>
-            <a routerLink="/product/1" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+            <span class="badge-franchise mb-1 d-inline-block">{{ product.franchise }}</span>
+            <p class="fw-semibold mb-1">{{ product.name }}</p>
+            <p class="small subtitle mb-2">Escala {{ product.scale }} · {{ product.brand }}</p>
+            <p class="price">${{ product.price }}</p>
+            <a [routerLink]="['/product', product.id]" class="btn btn-yellow btn-sm w-100">Ver figura</a>
           </div>
         </div>
-        <div class="col-6 col-md-3">
-          <div class="product-card p-3 h-100">
-            <div class="product-img mb-3"></div>
-            <span class="badge-franchise mb-1 d-inline-block">Warhammer</span>
-            <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-            <p class="small subtitle mb-2">Escala 1:18 · Lorem ipsum</p>
-            <p class="price">$749.99</p>
-            <a routerLink="/product/2" class="btn btn-yellow btn-sm w-100">Ver figura</a>
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="product-card p-3 h-100">
-            <div class="product-img mb-3"></div>
-            <span class="badge-franchise mb-1 d-inline-block">Anime</span>
-            <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-            <p class="small subtitle mb-2">Escala 1:8 · Lorem ipsum</p>
-            <p class="price">$1,299.99</p>
-            <a routerLink="/product/3" class="btn btn-yellow btn-sm w-100">Ver figura</a>
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="product-card p-3 h-100">
-            <div class="product-img mb-3"></div>
-            <span class="badge-franchise mb-1 d-inline-block">Halo</span>
-            <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-            <p class="small subtitle mb-2">Escala 1:6 · Lorem ipsum</p>
-            <p class="price">$1,099.99</p>
-            <a routerLink="/product/4" class="btn btn-yellow btn-sm w-100">Ver figura</a>
-          </div>
-        </div>
-      </div>
+      }
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Ofertas -->
-  <section class="section-dark py-5">
-    <div class="container">
-      <h2 class="fw-bold mb-1">Ofertas</h2>
-      <p class="subtitle mb-4">Lorem ipsum dolor sit amet consectetur.</p>
-      <div class="row g-4">
+<!-- Ofertas -->
+<section class="section-dark py-5">
+  <div class="container">
+    <h2 class="fw-bold mb-1">Ofertas</h2>
+    <p class="subtitle mb-4">Lorem ipsum dolor sit amet consectetur.</p>
+    <div class="row g-4">
+      @for (product of offerProducts(); track product.id) {
         <div class="col-6 col-md-3">
           <div class="product-card p-3 h-100">
             <div class="product-img mb-3"></div>
-            <span class="badge bg-danger mb-1 d-inline-block">-20%</span>
-            <span class="badge-franchise mb-1 d-inline-block ms-1">Transformers</span>
-            <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-            <p class="small subtitle mb-2">Escala 1:12 · Lorem ipsum</p>
-            <p class="price"><s class="text-secondary me-1 small">$899.99</s>$719.99</p>
-            <a routerLink="/product/5" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+            <span class="badge bg-danger mb-1 d-inline-block">-{{ discountPercent(product.price, product.oldPrice!) }}%</span>
+            <span class="badge-franchise mb-1 d-inline-block ms-1">{{ product.franchise }}</span>
+            <p class="fw-semibold mb-1">{{ product.name }}</p>
+            <p class="small subtitle mb-2">Escala {{ product.scale }} · {{ product.brand }}</p>
+            <p class="price"><s class="text-secondary me-1 small">${{ product.oldPrice }}</s>${{ product.price }}</p>
+            <a [routerLink]="['/product', product.id]" class="btn btn-yellow btn-sm w-100">Ver figura</a>
           </div>
         </div>
-        <div class="col-6 col-md-3">
-          <div class="product-card p-3 h-100">
-            <div class="product-img mb-3"></div>
-            <span class="badge bg-danger mb-1 d-inline-block">-15%</span>
-            <span class="badge-franchise mb-1 d-inline-block ms-1">Star Trek</span>
-            <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-            <p class="small subtitle mb-2">Escala 1:6 · Lorem ipsum</p>
-            <p class="price"><s class="text-secondary me-1 small">$1,199.99</s>$1,019.99</p>
-            <a routerLink="/product/6" class="btn btn-yellow btn-sm w-100">Ver figura</a>
-          </div>
-        </div>
-      </div>
+      }
+      @if (offerProducts().length === 0) {
+        <p class="subtitle">No hay ofertas activas por el momento.</p>
+      }
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Banner promocional -->
   <section class="banner py-5">

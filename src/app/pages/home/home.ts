@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +8,18 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home { }
+export class Home {
+  productService = inject(ProductService);
+
+  featuredProducts = computed(() =>
+    this.productService.products().slice(0, 4)
+  );
+
+  offerProducts = computed(() =>
+    this.productService.products().filter(p => p.oldPrice)
+  );
+
+  discountPercent(price: number, oldPrice: number): number {
+    return Math.round((1 - price / oldPrice) * 100);
+  }
+}

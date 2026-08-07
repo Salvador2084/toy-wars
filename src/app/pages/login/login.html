@@ -1,0 +1,30 @@
+<main class="py-5">
+  <div class="container" style="max-width: 480px;">
+    <div class="section-block p-4">
+      <h1 class="fw-bold mb-4 text-center">Iniciar sesión</h1>
+
+      @if (errorMessage()) {
+        <div class="alert alert-danger">{{ errorMessage() }}</div>
+      }
+
+      <div class="mb-3">
+        <label class="form-label label-text">Correo electrónico</label>
+        <input type="email" class="form-control checkout-input" placeholder="tucorreo@email.com"
+          [(ngModel)]="email">
+      </div>
+      <div class="mb-4">
+        <label class="form-label label-text">Contraseña</label>
+        <input type="password" class="form-control checkout-input" placeholder="••••••••"
+          [(ngModel)]="password" (keyup.enter)="submit()">
+      </div>
+
+      <button class="btn btn-yellow w-100 btn-lg mb-3" [disabled]="loading()" (click)="submit()">
+        {{ loading() ? 'Ingresando...' : 'Iniciar sesión' }}
+      </button>
+
+      <p class="subtitle small text-center mb-0">
+        ¿No tienes cuenta? <a routerLink="/register" class="text-yellow">Regístrate aquí</a>
+      </p>
+    </div>
+  </div>
+</main>
