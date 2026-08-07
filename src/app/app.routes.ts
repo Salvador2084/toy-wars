@@ -12,6 +12,8 @@ import { Contact } from './pages/contact/contact';
 import { Faq } from './pages/faq/faq';
 import { Policies } from './pages/policies/policies';
 import { Blog } from './pages/blog/blog';
+import { Login } from './pages/login/login';
+import { Register } from './pages/register/register';
 import { NotFound } from './pages/not-found/not-found';
 
 export const routes: Routes = [
@@ -28,5 +30,7 @@ export const routes: Routes = [
   { path: 'faq', component: Faq },
   { path: 'policies', component: Policies },
   { path: 'blog', component: Blog },
+  { path: 'login', component: Login },
+  { path: 'register', component: Register },
   { path: '**', component: NotFound },
 ];

@@ -1,6 +1,7 @@
 <main class="py-5">
   <div class="container">
 
+    @if (product(); as product) {
     <!-- Producto principal -->
     <div class="row g-5 mb-5">
 
@@ -17,28 +18,32 @@
 
       <!-- Información -->
       <div class="col-md-6">
-        <span class="badge-franchise mb-2 d-inline-block">Star Wars</span>
+        <span class="badge-franchise mb-2 d-inline-block">{{ product.franchise }}</span>
         <span class="badge-edition ms-1 mb-2 d-inline-block">Edición limitada</span>
-        <h1 class="fw-bold mt-2">Lorem ipsum dolor sit amet</h1>
-        <p class="subtitle mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <h1 class="fw-bold mt-2">{{ product.name }}</h1>
+        <p class="subtitle mb-3">{{ product.description }}</p>
 
         <!-- Precio -->
         <div class="mb-4">
-          <span class="price-main">$1,299.99</span>
-          <span class="text-secondary ms-2 small"><s>$1,499.99</s></span>
-          <span class="badge bg-danger ms-2">-13%</span>
+          <span class="price-main">${{ product.price }}</span>
+          @if (product.oldPrice) {
+            <span class="text-secondary ms-2 small"><s>${{ product.oldPrice }}</s></span>
+            <span class="badge bg-danger ms-2">-{{ discountPercent }}%</span>
+          }
         </div>
 
         <!-- Stock -->
         <div class="info-block p-3 mb-3">
           <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="stock-dot"></span>
-            <span class="fw-semibold">Disponible</span>
-            <span class="subtitle small ms-auto">Solo 3 unidades</span>
+            <span class="stock-dot" [class.stock-out]="product.stock === 0"></span>
+            <span class="fw-semibold">{{ product.stock > 0 ? 'Disponible' : 'Agotado' }}</span>
+            @if (product.stock > 0) {
+              <span class="subtitle small ms-auto">Solo {{ product.stock }} unidades</span>
+            }
           </div>
           <div class="d-flex align-items-center gap-2">
             <span>📦</span>
-            <span class="subtitle small">Lorem ipsum dolor sit amet.</span>
+            <span class="subtitle small">Envío en 3-5 días hábiles.</span>
           </div>
         </div>
 
@@ -73,8 +78,12 @@
 
         <!-- Botones -->
         <div class="d-flex gap-3">
-          <button class="btn btn-yellow btn-lg flex-grow-1">Agregar al carrito</button>
-          <button class="btn btn-outline-wish btn-lg">❤️</button>
+          <button class="btn btn-yellow btn-lg flex-grow-1" (click)="addToCart()" [disabled]="product.stock === 0">
+            {{ product.stock > 0 ? 'Agregar al carrito' : 'Agotado' }}
+          </button>
+          <button class="btn btn-outline-wish btn-lg" (click)="toggleWishlist()">
+            {{ wishlistService.isInWishlist(product.id) ? '❤️' : '🤍' }}
+          </button>
         </div>
 
       </div>
@@ -89,19 +98,19 @@
             <tbody>
               <tr>
                 <td class="subtitle">Franquicia</td>
-                <td class="fw-semibold">Star Wars</td>
+                <td class="fw-semibold">{{ product.franchise }}</td>
               </tr>
               <tr>
                 <td class="subtitle">Marca</td>
-                <td class="fw-semibold">Hot Toys</td>
+                <td class="fw-semibold">{{ product.brand }}</td>
               </tr>
               <tr>
                 <td class="subtitle">Escala</td>
-                <td class="fw-semibold">1:6</td>
+                <td class="fw-semibold">{{ product.scale }}</td>
               </tr>
               <tr>
                 <td class="subtitle">Altura</td>
-                <td class="fw-semibold">30 cm</td>
+                <td class="fw-semibold">{{ product.height }}</td>
               </tr>
             </tbody>
           </table>
@@ -111,7 +120,7 @@
             <tbody>
               <tr>
                 <td class="subtitle">Material</td>
-                <td class="fw-semibold">Lorem ipsum</td>
+                <td class="fw-semibold">{{ product.material }}</td>
               </tr>
               <tr>
                 <td class="subtitle">Edición</td>
@@ -119,11 +128,11 @@
               </tr>
               <tr>
                 <td class="subtitle">Año</td>
-                <td class="fw-semibold">2026</td>
+                <td class="fw-semibold">{{ product.year }}</td>
               </tr>
               <tr>
                 <td class="subtitle">SKU</td>
-                <td class="fw-semibold">TW-00001</td>
+                <td class="fw-semibold">TW-{{ product.id.toString().padStart(5, '0') }}</td>
               </tr>
             </tbody>
           </table>
@@ -134,83 +143,78 @@
     <!-- Reseñas -->
     <div class="mb-5">
       <h3 class="fw-bold mb-4">Reseñas</h3>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="review-card p-4">
-            <div class="d-flex justify-content-between mb-2">
-              <span class="fw-semibold">Lorem Ipsum</span>
-              <span class="stars">⭐⭐⭐⭐⭐</span>
+
+      <div class="row g-4 mb-4">
+        @for (review of productReviews(); track review.id) {
+          <div class="col-md-4">
+            <div class="review-card p-4">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="fw-semibold">{{ review.author }}</span>
+                <span class="stars">{{ '⭐'.repeat(review.rating) }}</span>
+              </div>
+              <p class="subtitle small mb-0">{{ review.comment }}</p>
             </div>
-            <p class="subtitle small mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatem.</p>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="review-card p-4">
-            <div class="d-flex justify-content-between mb-2">
-              <span class="fw-semibold">Lorem Ipsum</span>
-              <span class="stars">⭐⭐⭐⭐⭐</span>
-            </div>
-            <p class="subtitle small mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatem.</p>
+        }
+        @if (productReviews().length === 0) {
+          <div class="col-12">
+            <p class="subtitle">Aún no hay reseñas para esta figura. ¡Sé el primero en escribir una!</p>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="review-card p-4">
-            <div class="d-flex justify-content-between mb-2">
-              <span class="fw-semibold">Lorem Ipsum</span>
-              <span class="stars">⭐⭐⭐⭐⭐</span>
-            </div>
-            <p class="subtitle small mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatem.</p>
+        }
+      </div>
+
+      <!-- Formulario nueva reseña -->
+      <div class="info-block p-4">
+        <p class="fw-semibold mb-3">Escribe una reseña</p>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <input type="text" class="form-control search-input" placeholder="Tu nombre"
+              [ngModel]="reviewAuthor()" (ngModelChange)="reviewAuthor.set($event)">
+          </div>
+          <div class="col-md-6 d-flex align-items-center gap-1">
+            @for (star of [1, 2, 3, 4, 5]; track star) {
+              <span class="star-select" (click)="setRating(star)">
+                {{ star <= reviewRating() ? '⭐' : '☆' }}
+              </span>
+            }
+          </div>
+          <div class="col-12">
+            <textarea class="form-control search-input" rows="3" placeholder="¿Qué te pareció esta figura?"
+              [ngModel]="reviewComment()" (ngModelChange)="reviewComment.set($event)"></textarea>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-yellow" (click)="submitReview()">Publicar reseña</button>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Productos relacionados -->
+    @if (relatedProducts().length > 0) {
     <div>
       <h3 class="fw-bold mb-4">Productos relacionados</h3>
       <div class="row g-4">
-        <div class="col-6 col-md-3">
-          <div class="product-card p-3 h-100">
-            <div class="product-img mb-3"></div>
-            <span class="badge-franchise mb-1 d-inline-block">Star Wars</span>
-            <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-            <p class="small subtitle mb-2">Escala 1:6 · Lorem ipsum</p>
-            <p class="price">$999.99</p>
-            <a routerLink="/product/2" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+        @for (related of relatedProducts(); track related.id) {
+          <div class="col-6 col-md-3">
+            <div class="product-card p-3 h-100">
+              <div class="product-img mb-3"></div>
+              <span class="badge-franchise mb-1 d-inline-block">{{ related.franchise }}</span>
+              <p class="fw-semibold mb-1">{{ related.name }}</p>
+              <p class="small subtitle mb-2">Escala {{ related.scale }} · {{ related.brand }}</p>
+              <p class="price">${{ related.price }}</p>
+              <a [routerLink]="['/product', related.id]" class="btn btn-yellow btn-sm w-100">Ver figura</a>
+            </div>
           </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="product-card p-3 h-100">
-            <div class="product-img mb-3"></div>
-            <span class="badge-franchise mb-1 d-inline-block">Star Wars</span>
-            <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-            <p class="small subtitle mb-2">Escala 1:8 · Lorem ipsum</p>
-            <p class="price">$849.99</p>
-            <a routerLink="/product/3" class="btn btn-yellow btn-sm w-100">Ver figura</a>
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="product-card p-3 h-100">
-            <div class="product-img mb-3"></div>
-            <span class="badge-franchise mb-1 d-inline-block">Star Wars</span>
-            <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-            <p class="small subtitle mb-2">Escala 1:12 · Lorem ipsum</p>
-            <p class="price">$749.99</p>
-            <a routerLink="/product/4" class="btn btn-yellow btn-sm w-100">Ver figura</a>
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="product-card p-3 h-100">
-            <div class="product-img mb-3"></div>
-            <span class="badge-franchise mb-1 d-inline-block">Star Wars</span>
-            <p class="fw-semibold mb-1">Lorem ipsum dolor</p>
-            <p class="small subtitle mb-2">Escala 1:6 · Lorem ipsum</p>
-            <p class="price">$1,099.99</p>
-            <a routerLink="/product/5" class="btn btn-yellow btn-sm w-100">Ver figura</a>
-          </div>
-        </div>
+        }
       </div>
     </div>
+    }
+    } @else {
+      <div class="text-center py-5">
+        <p class="subtitle">No se encontró esta figura.</p>
+        <a routerLink="/catalog" class="btn btn-yellow mt-2">Volver al catálogo</a>
+      </div>
+    }
 
   </div>
 </main>

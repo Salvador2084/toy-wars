@@ -26,7 +26,9 @@
     }
   </a>
 </li>
-        <li class="nav-item"><a class="nav-link" routerLink="/account">👤</a></li>
+        <li class="nav-item">
+  <a class="nav-link" [routerLink]="authService.currentUser() ? '/account' : '/login'">👤</a>
+</li>
       </ul>
     </div>
   </div>

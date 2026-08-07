@@ -4,8 +4,15 @@
     <!-- Encabezado -->
     <div class="mb-4">
       <h1 class="fw-bold">Checkout</h1>
-      <p class="subtitle">Lorem ipsum dolor sit amet consectetur.</p>
+      <p class="subtitle">Completa tus datos para finalizar tu pedido.</p>
     </div>
+
+    @if (cartService.cartItems().length === 0) {
+      <div class="text-center py-5">
+        <p class="subtitle">Tu carrito está vacío.</p>
+        <a routerLink="/catalog" class="btn btn-yellow mt-2">Ir al catálogo</a>
+      </div>
+    } @else {
 
     <div class="row g-4">
 
@@ -18,19 +25,23 @@
           <div class="row g-3">
             <div class="col-md-6">
               <label class="form-label label-text">Nombre</label>
-              <input type="text" class="form-control checkout-input" placeholder="Tu nombre">
+              <input type="text" class="form-control checkout-input" placeholder="Tu nombre"
+                [(ngModel)]="firstName">
             </div>
             <div class="col-md-6">
               <label class="form-label label-text">Apellido</label>
-              <input type="text" class="form-control checkout-input" placeholder="Tu apellido">
+              <input type="text" class="form-control checkout-input" placeholder="Tu apellido"
+                [(ngModel)]="lastName">
             </div>
             <div class="col-md-6">
               <label class="form-label label-text">Correo electrónico</label>
-              <input type="email" class="form-control checkout-input" placeholder="tucorreo@email.com">
+              <input type="email" class="form-control checkout-input" placeholder="tucorreo@email.com"
+                [(ngModel)]="email">
             </div>
             <div class="col-md-6">
               <label class="form-label label-text">Teléfono</label>
-              <input type="tel" class="form-control checkout-input" placeholder="+52 664 000 0000">
+              <input type="tel" class="form-control checkout-input" placeholder="+52 664 000 0000"
+                [(ngModel)]="phone">
             </div>
           </div>
         </div>
@@ -41,27 +52,32 @@
           <div class="row g-3">
             <div class="col-12">
               <label class="form-label label-text">Calle y número</label>
-              <input type="text" class="form-control checkout-input" placeholder="Calle, número exterior e interior">
+              <input type="text" class="form-control checkout-input" placeholder="Calle, número exterior e interior"
+                [(ngModel)]="street">
             </div>
             <div class="col-md-6">
               <label class="form-label label-text">Colonia</label>
-              <input type="text" class="form-control checkout-input" placeholder="Colonia">
+              <input type="text" class="form-control checkout-input" placeholder="Colonia"
+                [(ngModel)]="neighborhood">
             </div>
             <div class="col-md-6">
               <label class="form-label label-text">Ciudad</label>
-              <input type="text" class="form-control checkout-input" placeholder="Ciudad">
+              <input type="text" class="form-control checkout-input" placeholder="Ciudad"
+                [(ngModel)]="city">
             </div>
             <div class="col-md-4">
               <label class="form-label label-text">Estado</label>
-              <input type="text" class="form-control checkout-input" placeholder="Estado">
+              <input type="text" class="form-control checkout-input" placeholder="Estado"
+                [(ngModel)]="state">
             </div>
             <div class="col-md-4">
               <label class="form-label label-text">Código postal</label>
-              <input type="text" class="form-control checkout-input" placeholder="00000">
+              <input type="text" class="form-control checkout-input" placeholder="00000"
+                [(ngModel)]="zip">
             </div>
             <div class="col-md-4">
               <label class="form-label label-text">País</label>
-              <select class="form-select checkout-input">
+              <select class="form-select checkout-input" [(ngModel)]="country">
                 <option>México</option>
                 <option>Estados Unidos</option>
                 <option>Canadá</option>
@@ -69,7 +85,8 @@
             </div>
             <div class="col-12">
               <label class="form-label label-text">Referencias</label>
-              <input type="text" class="form-control checkout-input" placeholder="Lorem ipsum dolor sit amet...">
+              <input type="text" class="form-control checkout-input" placeholder="Entre calles, color de fachada, etc."
+                [(ngModel)]="reference">
             </div>
           </div>
         </div>
@@ -79,32 +96,35 @@
           <h5 class="fw-bold mb-4">💳 Método de pago</h5>
           <div class="d-flex flex-column gap-2">
             <div class="payment-option">
-              <input type="radio" name="payment" id="paypal" class="me-2" checked>
+              <input type="radio" name="payment" id="paypal" class="me-2"
+                [checked]="paymentMethod() === 'paypal'" (change)="setPaymentMethod('paypal')">
               <label for="paypal" class="d-flex align-items-center gap-3 w-100">
                 <div class="payment-logo"></div>
                 <div>
                   <p class="fw-semibold mb-0">PayPal</p>
-                  <p class="subtitle small mb-0">Lorem ipsum dolor sit amet.</p>
+                  <p class="subtitle small mb-0">Paga de forma segura con tu cuenta PayPal.</p>
                 </div>
               </label>
             </div>
             <div class="payment-option">
-              <input type="radio" name="payment" id="mercadopago" class="me-2">
+              <input type="radio" name="payment" id="mercadopago" class="me-2"
+                [checked]="paymentMethod() === 'mercadopago'" (change)="setPaymentMethod('mercadopago')">
               <label for="mercadopago" class="d-flex align-items-center gap-3 w-100">
                 <div class="payment-logo"></div>
                 <div>
                   <p class="fw-semibold mb-0">Mercado Pago</p>
-                  <p class="subtitle small mb-0">Lorem ipsum dolor sit amet.</p>
+                  <p class="subtitle small mb-0">Tarjetas, transferencia o efectivo.</p>
                 </div>
               </label>
             </div>
             <div class="payment-option">
-              <input type="radio" name="payment" id="stripe" class="me-2">
+              <input type="radio" name="payment" id="stripe" class="me-2"
+                [checked]="paymentMethod() === 'stripe'" (change)="setPaymentMethod('stripe')">
               <label for="stripe" class="d-flex align-items-center gap-3 w-100">
                 <div class="payment-logo"></div>
                 <div>
                   <p class="fw-semibold mb-0">Stripe</p>
-                  <p class="subtitle small mb-0">Lorem ipsum dolor sit amet.</p>
+                  <p class="subtitle small mb-0">Pago con tarjeta de crédito o débito.</p>
                 </div>
               </label>
             </div>
@@ -115,12 +135,12 @@
         <div class="section-block p-4">
           <h5 class="fw-bold mb-3">✅ Confirmación de orden</h5>
           <div class="d-flex align-items-start gap-2 mb-3">
-            <input type="checkbox" class="mt-1" id="terms">
-            <label for="terms" class="subtitle small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Acepto los <a href="#" class="text-yellow">términos y condiciones</a> y las <a href="#" class="text-yellow">políticas de privacidad</a>.</label>
+            <input type="checkbox" class="mt-1" id="terms" [(ngModel)]="acceptedTerms">
+            <label for="terms" class="subtitle small">Acepto los <a href="#" class="text-yellow">términos y condiciones</a> y las <a href="#" class="text-yellow">políticas de privacidad</a>.</label>
           </div>
           <div class="d-flex align-items-start gap-2">
-            <input type="checkbox" class="mt-1" id="newsletter">
-            <label for="newsletter" class="subtitle small">Lorem ipsum dolor sit amet consectetur.</label>
+            <input type="checkbox" class="mt-1" id="newsletter" [(ngModel)]="wantsNewsletter">
+            <label for="newsletter" class="subtitle small">Quiero recibir ofertas y novedades por correo.</label>
           </div>
         </div>
 
@@ -131,58 +151,40 @@
         <div class="section-block p-4 sticky-top" style="top: 20px;">
           <h5 class="fw-bold mb-4">Resumen del pedido</h5>
 
-          <!-- Items -->
-          <div class="order-item d-flex gap-3 mb-3">
-            <div class="order-img"></div>
-            <div class="flex-grow-1">
-              <p class="fw-semibold mb-0 small">Lorem ipsum dolor</p>
-              <p class="subtitle small mb-0">x1 · Escala 1:6</p>
+          @for (item of cartService.cartItems(); track item.id) {
+            <div class="order-item d-flex gap-3 mb-3">
+              <div class="order-img"></div>
+              <div class="flex-grow-1">
+                <p class="fw-semibold mb-0 small">{{ item.name }}</p>
+                <p class="subtitle small mb-0">x{{ item.quantity }} · Escala {{ item.scale }}</p>
+              </div>
+              <span class="price small">${{ item.price * item.quantity }}</span>
             </div>
-            <span class="price small">$1,299.99</span>
-          </div>
-          <div class="order-item d-flex gap-3 mb-3">
-            <div class="order-img"></div>
-            <div class="flex-grow-1">
-              <p class="fw-semibold mb-0 small">Lorem ipsum dolor</p>
-              <p class="subtitle small mb-0">x2 · Escala 1:8</p>
-            </div>
-            <span class="price small">$1,699.98</span>
-          </div>
-          <div class="order-item d-flex gap-3 mb-4">
-            <div class="order-img"></div>
-            <div class="flex-grow-1">
-              <p class="fw-semibold mb-0 small">Lorem ipsum dolor</p>
-              <p class="subtitle small mb-0">x1 · Escala 1:6</p>
-            </div>
-            <span class="price small">$1,099.99</span>
-          </div>
+          }
 
           <hr class="border-secondary">
 
           <div class="d-flex justify-content-between mb-2">
             <span class="subtitle">Subtotal</span>
-            <span>$4,099.96</span>
+            <span>${{ subtotal() }}</span>
           </div>
           <div class="d-flex justify-content-between mb-2">
             <span class="subtitle">Envío</span>
-            <span>$250.00</span>
-          </div>
-          <div class="d-flex justify-content-between mb-2">
-            <span class="subtitle">Descuento</span>
-            <span class="text-success">-$0.00</span>
+            <span>${{ shippingCost }}</span>
           </div>
 
           <hr class="border-secondary">
 
           <div class="d-flex justify-content-between mb-4">
             <span class="fw-bold">Total</span>
-            <span class="price fw-bold fs-5">$4,349.96</span>
+            <span class="price fw-bold fs-5">${{ total() }}</span>
           </div>
 
-          <button class="btn btn-yellow w-100 btn-lg">Confirmar pedido</button>
+          <button class="btn btn-yellow w-100 btn-lg" [disabled]="!canSubmit()" (click)="confirmOrder()">Confirmar pedido</button>
         </div>
       </div>
 
     </div>
+    }
   </div>
 </main>

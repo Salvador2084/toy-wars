@@ -1,0 +1,52 @@
+<main class="py-5">
+  <div class="container" style="max-width: 480px;">
+    <div class="section-block p-4">
+      <h1 class="fw-bold mb-4 text-center">Crear cuenta</h1>
+
+      @if (errorMessage()) {
+        <div class="alert alert-danger">{{ errorMessage() }}</div>
+      }
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <label class="form-label label-text">Nombre</label>
+          <input type="text" class="form-control checkout-input" placeholder="Tu nombre"
+            [(ngModel)]="firstName">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label label-text">Apellido</label>
+          <input type="text" class="form-control checkout-input" placeholder="Tu apellido"
+            [(ngModel)]="lastName">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label label-text">Correo electrónico</label>
+        <input type="email" class="form-control checkout-input" placeholder="tucorreo@email.com"
+          [(ngModel)]="email">
+      </div>
+      <div class="mb-3">
+        <label class="form-label label-text">Teléfono</label>
+        <input type="tel" class="form-control checkout-input" placeholder="+52 664 000 0000"
+          [(ngModel)]="phone">
+      </div>
+      <div class="mb-3">
+        <label class="form-label label-text">Contraseña</label>
+        <input type="password" class="form-control checkout-input" placeholder="••••••••"
+          [(ngModel)]="password">
+      </div>
+      <div class="mb-4">
+        <label class="form-label label-text">Confirmar contraseña</label>
+        <input type="password" class="form-control checkout-input" placeholder="••••••••"
+          [(ngModel)]="confirmPassword" (keyup.enter)="submit()">
+      </div>
+
+      <button class="btn btn-yellow w-100 btn-lg mb-3" [disabled]="loading()" (click)="submit()">
+        {{ loading() ? 'Creando cuenta...' : 'Crear cuenta' }}
+      </button>
+
+      <p class="subtitle small text-center mb-0">
+        ¿Ya tienes cuenta? <a routerLink="/login" class="text-yellow">Inicia sesión</a>
+      </p>
+    </div>
+  </div>
+</main>
