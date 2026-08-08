@@ -15,6 +15,8 @@ import { Blog } from './pages/blog/blog';
 import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
 import { NotFound } from './pages/not-found/not-found';
+import { authGuard } from './guards/auth.guard';
+
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -23,7 +25,7 @@ export const routes: Routes = [
   { path: 'categories', component: Categories },
   { path: 'cart', component: Cart },
   { path: 'checkout', component: Checkout },
-  { path: 'account', component: Account },
+  { path: 'account', component: Account, canActivate: [authGuard] },
   { path: 'wishlist', component: Wishlist },
   { path: 'about', component: About },
   { path: 'contact', component: Contact },

@@ -42,3 +42,44 @@ footer {
   height: 30px;
   border-radius: 4px;
 }
+.carrier-logo {
+  width: 50px;
+  height: 30px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.carrier-logo-placeholder {
+  width: 50px;
+  height: 30px;
+  background-color: var(--tw-light-gray);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #444;
+}
+
+.tiny {
+  font-size: 0.6rem;
+}.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #25D366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: transform 0.2s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  color: #fff;
+}
