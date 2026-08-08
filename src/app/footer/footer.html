@@ -4,7 +4,7 @@
 
       <div class="col-md-4 mb-4">
         <h5 class="fw-bold text-yellow">Toy Wars</h5>
-        <p class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio delectus modi error rem.</p>
+        <p class="text-secondary">Figuras de colección a escala para fans de Star Wars, Warhammer, Anime, Halo, Transformers y Star Trek.</p>
       </div>
 
       <div class="col-md-2 mb-4">
@@ -35,6 +35,19 @@
         </ul>
       </div>
 
+      <div class="col-md-2 mb-4">
+  <h6 class="fw-bold">Newsletter</h6>
+  <p class="text-secondary small">Recibe ofertas y lanzamientos.</p>
+  @if (subscribed()) {
+    <p class="small text-success mb-0">¡Gracias por suscribirte!</p>
+  } @else {
+    <div class="d-flex gap-2">
+      <input type="email" class="form-control form-control-sm newsletter-input" placeholder="Tu correo"
+        [ngModel]="newsletterEmail()" (ngModelChange)="newsletterEmail.set($event)">
+      <button class="btn btn-yellow btn-sm" [disabled]="subscribing()" (click)="subscribe()">→</button>
+    </div>
+  }
+</div>
     </div>
 
     <!-- Envíos y pagos -->
@@ -44,11 +57,19 @@
         <p class="small fw-bold text-secondary mb-2">ENVÍOS CON</p>
         <div class="d-flex gap-3">
           <div class="carrier-badge">
-            <div class="carrier-logo"></div>
+            <img src="images/carriers/dhl.png" alt="DHL Express" class="carrier-logo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="carrier-logo-placeholder" style="display:none">
+              <span class="tiny text-secondary">dhl.png</span>
+            </div>
             <span class="small fw-semibold">DHL Express</span>
           </div>
           <div class="carrier-badge">
-            <div class="carrier-logo"></div>
+            <img src="images/carriers/estafeta.png" alt="Estafeta" class="carrier-logo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="carrier-logo-placeholder" style="display:none">
+              <span class="tiny text-secondary">estafeta.png</span>
+            </div>
             <span class="small fw-semibold">Estafeta</span>
           </div>
         </div>
@@ -58,15 +79,27 @@
         <p class="small fw-bold text-secondary mb-2">MÉTODOS DE PAGO</p>
         <div class="d-flex gap-3">
           <div class="carrier-badge">
-            <div class="carrier-logo"></div>
+            <img src="images/payments/paypal.png" alt="PayPal" class="carrier-logo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="carrier-logo-placeholder" style="display:none">
+              <span class="tiny text-secondary">paypal.png</span>
+            </div>
             <span class="small fw-semibold">PayPal</span>
           </div>
           <div class="carrier-badge">
-            <div class="carrier-logo"></div>
+            <img src="images/payments/mercadopago.png" alt="Mercado Pago" class="carrier-logo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="carrier-logo-placeholder" style="display:none">
+              <span class="tiny text-secondary">mercadopago.png</span>
+            </div>
             <span class="small fw-semibold">Mercado Pago</span>
           </div>
           <div class="carrier-badge">
-            <div class="carrier-logo"></div>
+            <img src="images/payments/stripe.png" alt="Stripe" class="carrier-logo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="carrier-logo-placeholder" style="display:none">
+              <span class="tiny text-secondary">stripe.png</span>
+            </div>
             <span class="small fw-semibold">Stripe</span>
           </div>
         </div>
@@ -85,4 +118,10 @@
     </div>
 
   </div>
+  <a href="https://wa.me/526640000000?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20una%20figura"
+  target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12.004 2.003c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.464 3.484 1.345 4.997L2 22l5.117-1.341a9.958 9.958 0 004.887 1.243h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.67-1.04-5.18-2.928-7.07a9.935 9.935 0 00-7.07-2.928zm5.855 14.34c-.246.694-1.428 1.324-1.968 1.373-.505.05-1.135.07-1.831-.115a15.2 15.2 0 01-1.556-.574 12.223 12.223 0 01-4.578-4.05 5.245 5.245 0 01-1.1-2.767c0-.874.463-1.298.63-1.475.166-.176.363-.22.483-.22.12 0 .243.001.348.006.111.005.26-.042.406.31.15.362.512 1.25.556 1.34.045.09.075.196.015.317-.06.12-.09.196-.18.302-.09.105-.19.234-.27.315-.09.09-.184.188-.08.368.105.18.465.767.998 1.242.686.612 1.264.802 1.444.892.18.09.285.075.39-.045.105-.12.45-.526.57-.706.12-.18.24-.15.405-.09.166.06 1.05.495 1.23.585.18.09.3.135.345.21.045.075.045.436-.2 1.13z"/>
+  </svg>
+</a>
 </footer>

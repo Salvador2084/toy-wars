@@ -57,15 +57,18 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "toy-wars:build:production"
-            },
-            "development": {
-              "buildTarget": "toy-wars:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
+  "options": {
+    "allowedHosts": ["toywars.com"]
+  },
+  "configurations": {
+    "production": {
+      "buildTarget": "toy-wars:build:production"
+    },
+    "development": {
+      "buildTarget": "toy-wars:build:development"
+    }
+  },
+  "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"

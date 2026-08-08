@@ -5,81 +5,105 @@
     <div class="container py-5">
       <div class="row align-items-center">
         <div class="col-md-6">
-          <span class="badge-edition mb-3 d-inline-block">Lorem ipsum dolor sit amet</span>
-          <h1 class="display-4 fw-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-          <p class="mt-3 subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatem cumque quod explicabo.</p>
-          <div class="d-flex gap-3 mt-4">
-            <a routerLink="/catalog" class="btn btn-yellow btn-lg">Ver catálogo</a>
-            <a routerLink="/categories" class="btn btn-outline-light btn-lg">Ver franquicias</a>
-          </div>
-        </div>
+  <span class="badge-edition mb-3 d-inline-block">Nueva colección 2026</span>
+  <h1 class="display-4 fw-bold">Figuras de colección para quienes viven sus franquicias favoritas</h1>
+  <p class="mt-3 subtitle">Piezas a escala de Star Wars, Warhammer, Anime, Halo, Transformers y Star Trek — elegidas para coleccionistas exigentes.</p>
+  <div class="d-flex gap-3 mt-4">
+    <a routerLink="/catalog" class="btn btn-yellow btn-lg">Ver catálogo</a>
+    <a routerLink="/categories" class="btn btn-outline-light btn-lg">Ver franquicias</a>
+  </div>
+</div>
       </div>
     </div>
   </section>
 
   <!-- Franquicias destacadas -->
-  <section class="section-dark py-5">
-    <div class="container">
-      <h2 class="fw-bold mb-1">Franquicias</h2>
-      <p class="subtitle mb-4">Lorem ipsum dolor sit amet.</p>
-      <div class="row g-3">
-        <div class="col-6 col-md-2">
-          <a routerLink="/catalog" class="text-decoration-none">
-            <div class="franchise-card text-center p-3">
-              <div class="franchise-img mb-2"></div>
-              <p class="mb-0 fw-semibold small">Star Wars</p>
+<section class="section-dark py-5">
+  <div class="container">
+    <h2 class="fw-bold mb-1">Franquicias</h2>
+    <p class="subtitle mb-4">Elige tu universo y descubre las figuras disponibles.</p>
+    <div class="row g-3">
+      <div class="col-6 col-md-2">
+        <a routerLink="/catalog" class="text-decoration-none">
+          <div class="franchise-card text-center p-3">
+            <img src="images/star-wars.jpg" alt="Star Wars" class="franchise-img mb-2"
+  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="franchise-img-placeholder mb-2" style="display:none">
+              <span class="small text-secondary">star-wars.jpg</span>
             </div>
-          </a>
-        </div>
-        <div class="col-6 col-md-2">
-          <a routerLink="/catalog" class="text-decoration-none">
-            <div class="franchise-card text-center p-3">
-              <div class="franchise-img mb-2"></div>
-              <p class="mb-0 fw-semibold small">Warhammer</p>
+            <p class="mb-0 fw-semibold small">Star Wars</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-2">
+        <a routerLink="/catalog" class="text-decoration-none">
+          <div class="franchise-card text-center p-3">
+            <img src="images/warhammer.png" alt="Warhammer" class="franchise-img mb-2"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="franchise-img-placeholder mb-2" style="display:none">
+              <span class="small text-secondary">warhammer.png</span>
             </div>
-          </a>
-        </div>
-        <div class="col-6 col-md-2">
-          <a routerLink="/catalog" class="text-decoration-none">
-            <div class="franchise-card text-center p-3">
-              <div class="franchise-img mb-2"></div>
-              <p class="mb-0 fw-semibold small">Halo</p>
+            <p class="mb-0 fw-semibold small">Warhammer</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-2">
+        <a routerLink="/catalog" class="text-decoration-none">
+          <div class="franchise-card text-center p-3">
+            <img src="images/halo.jpg" alt="Halo" class="franchise-img mb-2"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="franchise-img-placeholder mb-2" style="display:none">
+              <span class="small text-secondary">halo.jpg</span>
             </div>
-          </a>
-        </div>
-        <div class="col-6 col-md-2">
-          <a routerLink="/catalog" class="text-decoration-none">
-            <div class="franchise-card text-center p-3">
-              <div class="franchise-img mb-2"></div>
-              <p class="mb-0 fw-semibold small">Transformers</p>
+            <p class="mb-0 fw-semibold small">Halo</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-2">
+        <a routerLink="/catalog" class="text-decoration-none">
+          <div class="franchise-card text-center p-3">
+            <img src="images/transformers.jpg" alt="Transformers" class="franchise-img mb-2"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="franchise-img-placeholder mb-2" style="display:none">
+              <span class="small text-secondary">transformers.jpg</span>
             </div>
-          </a>
-        </div>
-        <div class="col-6 col-md-2">
-          <a routerLink="/catalog" class="text-decoration-none">
-            <div class="franchise-card text-center p-3">
-              <div class="franchise-img mb-2"></div>
-              <p class="mb-0 fw-semibold small">Anime</p>
+            <p class="mb-0 fw-semibold small">Transformers</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-2">
+        <a routerLink="/catalog" class="text-decoration-none">
+          <div class="franchise-card text-center p-3">
+            <img src="images/anime.jpg" alt="Anime" class="franchise-img mb-2"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="franchise-img-placeholder mb-2" style="display:none">
+              <span class="small text-secondary">anime.jpg</span>
             </div>
-          </a>
-        </div>
-        <div class="col-6 col-md-2">
-          <a routerLink="/catalog" class="text-decoration-none">
-            <div class="franchise-card text-center p-3">
-              <div class="franchise-img mb-2"></div>
-              <p class="mb-0 fw-semibold small">Star Trek</p>
+            <p class="mb-0 fw-semibold small">Anime</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-2">
+        <a routerLink="/catalog" class="text-decoration-none">
+          <div class="franchise-card text-center p-3">
+            <img src="images/star-trek.jpg" alt="Star Trek" class="franchise-img mb-2"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="franchise-img-placeholder mb-2" style="display:none">
+              <span class="small text-secondary">star-trek.jpg</span>
             </div>
-          </a>
-        </div>
+            <p class="mb-0 fw-semibold small">Star Trek</p>
+          </div>
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Productos destacados -->
 <section class="py-5">
   <div class="container">
     <h2 class="fw-bold mb-1">Destacados</h2>
-    <p class="subtitle mb-4">Lorem ipsum dolor sit amet consectetur.</p>
+<p class="subtitle mb-4">Una selección de piezas que no te puedes perder.</p>
     <div class="row g-4">
       @for (product of featuredProducts(); track product.id) {
         <div class="col-6 col-md-3">
@@ -101,7 +125,7 @@
 <section class="section-dark py-5">
   <div class="container">
     <h2 class="fw-bold mb-1">Ofertas</h2>
-    <p class="subtitle mb-4">Lorem ipsum dolor sit amet consectetur.</p>
+<p class="subtitle mb-4">Aprovecha antes de que se agoten.</p>
     <div class="row g-4">
       @for (product of offerProducts(); track product.id) {
         <div class="col-6 col-md-3">
@@ -125,11 +149,11 @@
 
   <!-- Banner promocional -->
   <section class="banner py-5">
-    <div class="container text-center py-3">
-      <h2 class="fw-bold">Lorem ipsum dolor sit amet.</h2>
-      <p class="subtitle mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatem cumque quod.</p>
-      <a routerLink="/catalog" class="btn btn-yellow btn-lg mt-2">Ver catálogo completo</a>
-    </div>
+  <div class="container text-center py-3">
+    <h2 class="fw-bold">¿Buscas una pieza en particular?</h2>
+    <p class="subtitle mt-2">Explora el catálogo completo y filtra por franquicia, escala o marca hasta encontrar exactamente lo que quieres agregar a tu colección.</p>
+    <a routerLink="/catalog" class="btn btn-yellow btn-lg mt-2">Ver catálogo completo</a>
+  </div>
   </section>
 
 </main>

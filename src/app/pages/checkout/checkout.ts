@@ -1,6 +1,7 @@
 import { Component, inject, computed, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -12,14 +13,12 @@ import { CartService } from '../../services/cart.service';
 export class Checkout {
   cartService = inject(CartService);
   private router = inject(Router);
+  private http = inject(HttpClient);
 
-  // Datos de contacto
   firstName = signal('');
   lastName = signal('');
   email = signal('');
   phone = signal('');
-
-  // Dirección
   street = signal('');
   neighborhood = signal('');
   city = signal('');
@@ -27,11 +26,11 @@ export class Checkout {
   zip = signal('');
   country = signal('México');
   reference = signal('');
-
-  // Pago y confirmación
   paymentMethod = signal('paypal');
   acceptedTerms = signal(false);
   wantsNewsletter = signal(false);
+  submitting = signal(false);
+  errorMessage = signal('');
 
   shippingCost = 250.00;
 
@@ -55,17 +54,29 @@ export class Checkout {
   confirmOrder() {
     if (!this.canSubmit()) return;
 
-    // TODO: aquí se conectará el endpoint PHP para guardar la orden (create_order.php)
-    console.log('Orden confirmada', {
+    this.submitting.set(true);
+    this.errorMessage.set('');
+
+    const payload = {
       contact: { firstName: this.firstName(), lastName: this.lastName(), email: this.email(), phone: this.phone() },
       address: { street: this.street(), neighborhood: this.neighborhood(), city: this.city(), state: this.state(), zip: this.zip(), country: this.country(), reference: this.reference() },
       paymentMethod: this.paymentMethod(),
-      newsletter: this.wantsNewsletter(),
       items: this.cartService.cartItems(),
+      subtotal: this.subtotal(),
+      shippingCost: this.shippingCost,
       total: this.total()
-    });
+    };
 
-    this.cartService.clearCart();
-    this.router.navigateByUrl('/');
+    this.http.post<{ success: boolean; orderId: number }>('http://localhost/toy-wars-api/create_order.php', payload).subscribe({
+      next: () => {
+        this.cartService.clearCart();
+        this.submitting.set(false);
+        this.router.navigateByUrl('/account');
+      },
+      error: (err) => {
+        this.submitting.set(false);
+        this.errorMessage.set(err.error?.error ?? 'Ocurrió un error al procesar tu pedido.');
+      }
+    });
   }
 }
